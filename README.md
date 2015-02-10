@@ -1,4 +1,2 @@
-## my_printer
-
-出票
-
+# my_printer
+pirnt ticket

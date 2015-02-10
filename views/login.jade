@@ -1,0 +1,17 @@
+doctype html
+html(lang="en" class="no-js"  ng-app="printerApp")
+    head
+        link(href="../css/base.css" rel="stylesheet")
+        link(href="../css/login.css" rel="stylesheet")
+        title 出票管理系统
+    body
+        .loginbox
+            .login
+                form(action="login.htm" method="post" class="formtxt")
+                    label 用户名
+                    input(type="text" name='userName'  class="txt")
+                    label 密码
+                    input(type="password" name='passWord' class="txt")
+                    input(type="submit" value="" class="btn")
+
+

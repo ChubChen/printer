@@ -1,0 +1,10 @@
+body{ background:#8fc6ff; font-family:"微软雅黑";}
+.loginbox{height:899px; height:768px;  margin:0 auto; background: url(../images/backpic.jpg) no-repeat center;}
+.login{ margin:0 auto; width:630px; height:80px; position: relative; top:403px; left:12px;}
+.formtxt{ width:600px; margin:0 auto; position:relative; top:22px; left:30px;}
+.formtxt label{ padding:8px; color:#FFF;}
+.txt{ height:25px; border:1px solid #69d4fe; padding-left:5px; color:#666; font-size:14px;}
+.btn{ width:94px; height:34px; background:url(../images/btn-login.png) no-repeat; border:0; cursor:pointer; margin-left:10px;}
+
+
+
