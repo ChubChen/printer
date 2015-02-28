@@ -15,7 +15,7 @@ var TerminalControl =control.terminalControl;
 var ticketControl=control.ticketControl;
 var pageControl=control.pageControl;
 
-var HOST = '127.0.0.1';
+var HOST = '10.10.101.249';
 var PORT = 16777;
 
 
@@ -29,7 +29,7 @@ async.waterfall([function (cb) {
     webServer.start(function (io) {
         net.createServer(function (sock) {
             //此socket唯一
-            var remoteAddress = sock.remoteAddress;
+            var remoteAddresls = sock.remoteAddress;
             var remotePort = sock.remotePort;
             var dataBuf = new Buffer(50 * 1024);
             var terminalControl = new TerminalControl(sock, io);
