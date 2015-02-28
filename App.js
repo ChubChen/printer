@@ -116,7 +116,7 @@ async.waterfall([function (cb) {
     console.log('TCP Server listening on ' + HOST + ':' + PORT);
     console.log(data);
     ticketControl.run();
-    pageControl.run();
+    //pageControl.run();
 });
 
 

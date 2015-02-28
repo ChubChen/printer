@@ -81,26 +81,40 @@ var FormValidation = function () {
                             var arr = elements[i].value.split(',');
                             for (var j = 0; j < arr.length; j++) {
                                 bodyNode.gameCode[arr[j]] = game[arr[j]];
-                            };
+                            }
+                            ;
                         } else {
                             bodyNode[elements[i].name] = elements[i].value;
-                        };
+                        }
+                        ;
                     }
-                };
+                }
+                ;
 
+                var singleSelect = $(".chzn-single");
                 var selecteds = $(".search-choice");
                 if (selecteds.length != 0) {
                     bodyNode.gameCode = {};
                     for (var i = 0; i < selecteds.length; i++) {
                         var name = selecteds[i].getElementsByTagName('span')[0].innerText;
                         bodyNode.gameCode[getGameCode(name)] = name;
-                    };
-                }else if(data.cmd=='addUser'){
+                    }
+                    ;
+                }
+                else if (singleSelect.length != 0) {
+                    for (var i = 0; i < singleSelect.length; i++) {
+                        var name = singleSelect[i].getElementsByTagName('span')[0].innerText;
+                        bodyNode.status = getStatusCode(name);
+                    }
+                    ;
+                }
+                else if (data.cmd == 'addUser') {
 
-                }else{
+                } else {
                     $("#" + data.cmd).modal('hide');
                     return;
-                };
+                }
+                ;
                 socket.emit('data', data);
                 $("#" + data.cmd).modal('hide');
             }
@@ -125,10 +139,3 @@ var FormValidation = function () {
     };
 }();
 
-function getGameCode(gameName) {
-    for (var key in game) {
-        if (game[key] == gameName) {
-            return key;
-        }
-    }
-}

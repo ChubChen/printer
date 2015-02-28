@@ -21,6 +21,7 @@ io.on('connection', function (socket) {
         socketControl.handle(cmd, bodyNode, function (err, type,cmd, res) {
             if(err){
               //错误处理
+                console.error(err);
             };
             if(type == 1){
                 socket.emit(cmd,res);

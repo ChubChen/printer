@@ -5,8 +5,6 @@
         <div class="block">
             <div class="navbar navbar-inner block-header">
                 <div class="muted pull-left">待出票队列</div>
-                <div class="pull-right"><span class="badge badge-info">17</span>
-                </div>
             </div>
             <div class="block-content collapse in">
                 <table class="table table-striped">
@@ -20,10 +18,10 @@
                     </thead>
                     <tbody>
                     <tr  ng-cloak   ng-repeat="waitGame in waitQueen">
-                        <td>{{waitGame.value.gameCode}}</td>
+                        <td>{{waitGame.value.gameCode | consGameCodeDes}}</td>
                         <td>{{waitGame.value.termCode}}</td>
                         <td>{{waitGame.value.count}}</td>
-                        <td>{{waitGame.value.totalMoney}}</td>
+                        <td>{{waitGame.value.totalMoney/100}}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -36,9 +34,6 @@
         <div class="block">
             <div class="navbar navbar-inner block-header">
                 <div class="muted pull-left">出票成功队列</div>
-                <div class="pull-right"><span class="badge badge-info">812</span>
-
-                </div>
             </div>
             <div class="block-content collapse in">
                 <table class="table table-striped">
@@ -75,7 +70,6 @@
 
 </div>
 
-
 <style>
     .ulList{list-style: none;display: block;margin:0;}
     .liList{float: left;width:20%;margin-bottom:20px}
@@ -100,6 +94,7 @@
                         <img  style="width: 100px; height: 100px;" ng-src="{{terminal.status|consStatus}}">
                         <div class="popover fade bottom in" style="top: 104px; left: 30px; display: block;">
                             <h3 class="popover-title">终端机编号:<font color="red">{{terminal.id}}</font></h3>
+                            <h3 class="popover-title">当前模式:<font color="red">{{terminal.status|consStatusDes}} </font></h3>
                             <div class="popover-content">待出票：{{terminal.waitCount}} 张<br/> 已成功出票：{{terminal.succCount}} 张</div>
                         </div>
                     </a>
@@ -120,7 +115,7 @@
                 <span aria-hidden='true'> × </span>
                 <span class="sr-only">Close</span>
             </button>
-            <h4 id="myModalLabel" class="modal-title">创建终端机</h4>
+            <h4 id="myModalLabel" class="modal-title">终端机信息</h4>
         </div>
         <div class="modal-body">
             <form action="addTerminal" id="form_sample_1" class="form-horizontal" style="height: 500px;">
@@ -145,15 +140,12 @@
                             <input type="text" name="id" ng-model="terminal.id"  data-required="1" class="span6 m-wrap"/>
                         </div>
                     </div>
-
                     <div class="control-group" ng-show="door">
                         <label class="control-label" >当前出票游戏</label>
                         <div class="controls">
                             <p class="btn btn-mini" ng-repeat="gameName in hadGame">{{gameName}}</p>
                         </div>
                     </div>
-
-
                     <div class="control-group">
                         <label class="control-label" for="multiSelect">游戏种类<span class="required">*</span></label>
                         <div class="controls">
@@ -162,6 +154,21 @@
                             </select>
                         </div>
                     </div>
+                    <div class="control-group" ng-show="door">
+                        <label class="control-label" >当前终端机状态</label>
+                        <div class="controls">
+                            <p class="btn btn-mini">{{terminal.status|consStatusDes}}</p>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="select01">终端机状态</label>
+                        <div class="controls">
+                            <select id="select01" class="chzn-select">
+                                <option  ng-repeat="s in statusList" on-finish >{{s}}</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-actions">
                         <button type="submit" class="btn btn-primary">确认提交</button>
                         <button type="button" class="btn"  data-dismiss='modal'>Cancel</button>

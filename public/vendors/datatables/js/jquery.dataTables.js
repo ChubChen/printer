@@ -2813,7 +2813,6 @@
 		
 		
 			$('select', nLength).attr('aria-controls', oSettings.sTableId);
-			
 			return nLength;
 		}
 		

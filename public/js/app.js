@@ -22,6 +22,10 @@ printerApp.config(['$routeProvider',
                 templateUrl: '../partials/user-list.html',
                 controller: 'userListCtrl'
             }).
+            when('/tickets', {
+                templateUrl: '../partials/ticket-list.html',
+                controller: 'ticketListCtrl'
+            }).
             otherwise({
                 redirectTo: '/system'
             });

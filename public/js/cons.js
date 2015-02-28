@@ -14,3 +14,27 @@ var game = {
     'T54': '四场进球',
     'T55': '六场半全场'
 };
+
+function getGameCode(gameName) {
+    for (var key in game) {
+        if (game[key] == gameName) {
+            return key;
+        }
+    }
+};
+
+var statusList = {
+    '0000': '请选择',
+    '1000': '出票',
+    '1100': '查询',
+    '1200': '兑奖',
+    '1300': '打印'
+};
+
+function getStatusCode(statusDes) {
+    for (var key in statusList) {
+        if (statusList[key] == statusDes) {
+            return key;
+        }
+    }
+};
