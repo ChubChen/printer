@@ -41,25 +41,16 @@
                     <tr>
                         <th>游戏</th>
                         <th>期次</th>
-                        <th>状态</th>
                         <th>销售数量</th>
                         <th>销售金额</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>大乐透</td>
-                        <td>15001</td>
-                        <td>已停售</td>
-                        <td>2098</td>
-                        <td>40993</td>
-                    </tr>
-                    <tr>
-                        <td>双色球</td>
-                        <td>2015001</td>
-                        <td>已停售</td>
-                        <td>165</td>
-                        <td>3098</td>
+                    <tr ng-cloak   ng-repeat="successGame in successQueen">
+                        <td>{{successGame._id.gameCode|consGameCodeDes}}</td>
+                        <td>{{successGame._id.termCode}}</td>
+                        <td>{{successGame.counts}}</td>
+                        <td>{{successGame.total/100}}</td>
                     </tr>
                     </tbody>
                 </table>

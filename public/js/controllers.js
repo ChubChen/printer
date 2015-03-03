@@ -57,6 +57,11 @@ printerControllers.controller('systemListCtrl', ['$scope', 'socket',
         socket.on('waitQueen', function (waitQueen) {
             $scope.waitQueen = waitQueen;
         });
+
+        socket.on('successQueen', function (successQueen) {
+            $scope.successQueen = successQueen;
+        });
+
         $scope.addTerminal = function () {
             $scope.terminal = {};
             $scope.game = game;
