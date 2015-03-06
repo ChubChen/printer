@@ -41,6 +41,7 @@
                         <th>游戏名</th>
                         <th>期次</th>
                         <th>号码</th>
+                        <th>状态</th>
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -50,6 +51,7 @@
                         <td>{{successTicket.gameCode | consGameCodeDes}}</td>
                         <td>{{successTicket.termCode}}</td>
                         <td>{{successTicket.numbers}}</td>
+                        <td>{{successTicket.status}}</td>
                         <td>
                             <button class="btn btn-primary btn-mini" ng-click="printTicket(successTicket)">打印</button>
                         </td>
@@ -63,9 +65,9 @@
                     <input type='hidden' id="limit" ng-model="limit"/>
                     <ul>
                         <li class="{{curPage<=1 | consPageBarDes}}">
-                            <a href="javascript:void(0)"  ng-click="toPage(curPage-1)">上一页</a>
+                            <a href="javascript:void(0)" ng-click="toPage(curPage-1)">上一页</a>
                         </li>
-                        <li ng-repeat="number in pageNumbers" >
+                        <li ng-repeat="number in pageNumbers">
                             <a href="javascript:void(0)" ng-click="toPage(number)">{{number}}</a>
                         </li>
 

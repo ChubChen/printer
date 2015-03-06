@@ -55,8 +55,8 @@ printerFilters.filter('consGameCodeDes', [
                 case 'T01':
                     res='大乐透';
                     break;
-                case 1200:
-                    res='兑奖';
+                case 'T51':
+                    res='竞猜足球';
                     break;
                 case 1300:
                     res='打印';

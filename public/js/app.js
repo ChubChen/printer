@@ -10,7 +10,6 @@ var printerApp = angular.module('printerApp', [
     'printerDirectives'
 ]);
 
-
 printerApp.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider.

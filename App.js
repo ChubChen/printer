@@ -14,6 +14,7 @@ var control= require('print_control');
 var TerminalControl =control.terminalControl;
 var ticketControl=control.ticketControl;
 var pageControl=control.pageControl;
+var bonusControl=control.bonusControl;
 
 var HOST = 'localhost';
 var PORT = 16777;
@@ -115,8 +116,9 @@ async.waterfall([function (cb) {
 }], function (err, data) {
     console.log('TCP Server listening on ' + HOST + ':' + PORT);
     console.log(data);
-    //ticketControl.run();
+    ticketControl.run();
     //pageControl.run();
+    //bonusControl.run();
 });
 
 

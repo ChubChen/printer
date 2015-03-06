@@ -12,7 +12,6 @@ io.on('connection', function (socket) {
 
     //每个连接有单独的控制层
     var socketControl = new SocketControl();
-
     //监听命令
     socket.on('data', function (data) {
         console.log('data: '+JSON.stringify(data));

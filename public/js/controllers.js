@@ -215,6 +215,17 @@ printerControllers.controller('ticketListCtrl', ['$scope', 'socket','$window',
         };
         //接受打印响应
         socket.on('printTicket', function (result) {
-            $window.alert(result);
+            var res='';
+            if(result==0){
+                res='没有可用的终端机';
+            }else{
+                var querySuccessTicketsData = angular.copy(data);
+                querySuccessTicketsData.bodyNode.curPage = $scope.curPage;
+                querySuccessTicketsData.bodyNode.limit = 8;
+                querySuccessTicketsData.cmd = 'querySuccessTickets';
+                socket.emit('data', querySuccessTicketsData);
+                res='已经发送终端机进行出票';
+            }
+            $window.alert(res);
         });
     }]);
