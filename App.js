@@ -16,8 +16,31 @@ var ticketControl=control.ticketControl;
 var pageControl=control.pageControl;
 var bonusControl=control.bonusControl;
 
+var target='dev';
+var argv = process.argv;
+var kvs = {};
+for(var key in argv)
+{
+    if(key > 1)
+    {
+        var kv = argv[key].split("=");
+        kvs[kv[0]] = kv[1];
+    }
+}
+if(kvs.target)
+{
+    target = kvs.target;
+}
+
+
 var HOST = '192.168.178.128';
 var PORT = 16777;
+
+
+if(target=='run'){
+    HOST = '192.168.0.19';
+    PORT = 16777;
+}
 
 
 async.waterfall([function (cb) {
