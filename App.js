@@ -10,34 +10,32 @@ var cons = require('print_constants');
 var msgParam = cons.msgParam;
 
 var webServer = require('./WebServer.js');
-var control= require('print_control');
-var TerminalControl =control.terminalControl;
-var ticketControl=control.ticketControl;
-var pageControl=control.pageControl;
-var bonusControl=control.bonusControl;
+var control = require('print_control');
+var TerminalControl = control.terminalControl;
+var ticketControl = control.ticketControl;
+var pageControl = control.pageControl;
+var bonusControl = control.bonusControl;
+var termCodeControl = control.termCodeControl;
 
-var target='dev';
+var target = 'dev';
 var argv = process.argv;
 var kvs = {};
-for(var key in argv)
-{
-    if(key > 1)
-    {
+for (var key in argv) {
+    if (key > 1) {
         var kv = argv[key].split("=");
         kvs[kv[0]] = kv[1];
     }
 }
-if(kvs.target)
-{
+if (kvs.target) {
     target = kvs.target;
 }
 
 
-var HOST = '192.168.178.128';
+var HOST = '192.168.178.129';
 var PORT = 16777;
 
 
-if(target=='run'){
+if (target == 'run') {
     HOST = '192.168.0.19';
     PORT = 16777;
 }
@@ -90,7 +88,7 @@ async.waterfall([function (cb) {
                         curBufLen = 0;
                     } else {
                         var bodyNodeBuf = new Buffer(dataBufLen + packageBufLen - msgParam.headBufLen);
-                        dataBuf.copy(bodyNodeBuf, 0, msgParam.headBufLen, dataBufLen+packageBufLen);
+                        dataBuf.copy(bodyNodeBuf, 0, msgParam.headBufLen, dataBufLen + packageBufLen);
                         //解析bodyNode
                         var bodyNode = dataUtil.handleForBodyNode(headNode, bodyNodeBuf);
                         //可以分流处理不同接口了
@@ -139,9 +137,14 @@ async.waterfall([function (cb) {
 }], function (err, data) {
     console.log('TCP Server listening on ' + HOST + ':' + PORT);
     console.log(data);
+
     ticketControl.run();
-    //pageControl.run();
-    //bonusControl.run();
+
+    // pageControl.run();
+
+    bonusControl.run();
+
+    termCodeControl.run();
 });
 
 

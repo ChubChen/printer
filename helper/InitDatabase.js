@@ -17,6 +17,14 @@ console.log('开始执行数据库初始化脚本');
                     console.log('已创建History');
                     cb(null);
                 });
+            }, function(cb){
+                mongoDBUtil.db.createCollection('TicketsWaitBonus', {safe: true}, function (err, collection) {
+                    if (err) {
+                        cb(err);
+                    };
+                    console.log('已创建TicketsWaitBonus');
+                    cb(null);
+                });
             },function(cb){
                 mongoDBUtil.db.createCollection('T05Numbers', {safe: true}, function (err, collection) {
                     if (err) {
@@ -106,12 +114,20 @@ console.log('开始执行数据库初始化脚本');
                     cb(null);
                 });
             },function(cb){
+                mongoDBUtil.db.createCollection('WaitBonusTerms', {safe: true}, function (err, collection) {
+                    if (err) {
+                        cb(err);
+                    }
+                    console.log('已创建waitBonusTerms');
+                    cb(null);
+                });
+            },function(cb){
                 mongoDBUtil.db.createCollection('customer', {safe: true}, function (err, collection) {
                     if (err) {
                         cb(err);
                     };
                     var body={};
-                    body.userName='w44';
+                    body.userName='w55';
                     body.passWord='123456';
                     collection.insert(body, function () {
                         console.log(body.userName + "已入用户库");
