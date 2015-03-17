@@ -2,7 +2,7 @@
     <!-- block -->
     <div class="block">
         <div class="navbar navbar-inner block-header">
-            <div class="muted pull-left">票据查询</div>
+            <div class="muted pull-left">历史票据查询</div>
         </div>
         <div class="block-content collapse in">
             <div class="span12">
@@ -42,7 +42,6 @@
                         <th>期次</th>
                         <th>号码</th>
                         <th>状态</th>
-                        <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -52,9 +51,6 @@
                         <td>{{successTicket.termCode}}</td>
                         <td>{{successTicket.numbers}}</td>
                         <td>{{successTicket.status}}</td>
-                        <td>
-                            <button class="btn btn-primary btn-mini" ng-click="printTicket(successTicket)">打印</button>
-                        </td>
                     </tr>
                     </tbody>
                 </table>
