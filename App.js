@@ -140,7 +140,7 @@ async.waterfall([function (cb) {
 
     ticketControl.run();
 
-    // pageControl.run();
+    pageControl.run();
 
     bonusControl.run();
 
