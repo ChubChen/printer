@@ -29,6 +29,10 @@ printerApp.config(['$routeProvider',
                 templateUrl: '../partials/bonus-list.html',
                 controller: 'bonusListCtrl'
             }).
+            when('/history', {
+                templateUrl: '../partials/history-list.html',
+                controller: 'historyListCtrl'
+            }).
             otherwise({
                 redirectTo: '/system'
             });
