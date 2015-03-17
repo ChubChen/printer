@@ -229,3 +229,83 @@ printerControllers.controller('ticketListCtrl', ['$scope', 'socket','$window',
             $window.alert(res);
         });
     }]);
+
+
+
+
+/*
+ *  Bonus页控制
+ **/
+printerControllers.controller('bonusListCtrl', ['$scope', 'socket','$window',
+    function ($scope, socket,$window) {
+        /*初始化命令**/
+        var data = {};
+        var bodyNode = {};
+        data.bodyNode = bodyNode;
+        //初始化成功票据
+        var queryWaitBounsTicketsData = angular.copy(data);
+        if ($scope.curPage) {
+        } else {
+            queryWaitBounsTicketsData.bodyNode.curPage = 1;
+            queryWaitBounsTicketsData.bodyNode.limit = 8;
+        }
+        queryWaitBounsTicketsData.cmd = 'queryWaitBonusTickets';
+        socket.emit('data', queryWaitBounsTicketsData);
+        /*其它命令**/
+        //接收成功票据列表
+        socket.on('queryWaitBonusTickets', function (backNode) {
+            $scope.curPage = backNode.curPage;
+            $scope.count = backNode.count;
+            $scope.limit = backNode.limit;
+            $scope.successTickets = backNode.datas;
+            var pageCount = backNode.count / backNode.limit + 1;
+            var pageNumbers = new Array();
+            for (var i = 1; i <= pageCount; i++) {
+                pageNumbers.push(i);
+            }
+            $scope.pageNumbers = pageNumbers;
+        });
+        $scope.toPage = function (page) {
+            var countPage = $scope.count / $scope.limit;
+            if (page < 1 || page > countPage + 1) {
+                return;
+            }
+            queryWaitBounsTicketsData.bodyNode.curPage = page;
+            socket.emit('data', queryWaitBounsTicketsData);
+        };
+        $scope.query = function () {
+            queryWaitBounsTicketsData.bodyNode.curPage = 1;
+            queryWaitBounsTicketsData.bodyNode.cond = {};
+            if ($scope.id) {
+                queryWaitBounsTicketsData.bodyNode.cond.id = $scope.id;
+            }
+            if ($scope.gameCode) {
+                queryWaitBounsTicketsData.bodyNode.cond.gameCode = $scope.gameCode;
+            }
+            if ($scope.termCode) {
+                queryWaitBounsTicketsData.bodyNode.cond.termCode = $scope.termCode;
+            }
+            socket.emit('data', queryWaitBounsTicketsData);
+        };
+        $scope.printTicket = function (ticket) {
+            var printTicketData = angular.copy(data);
+            printTicketData.cmd='printTicket';
+            printTicketData.bodyNode.id = ticket.id;
+            socket.emit('data', printTicketData);
+        };
+        //接受打印响应
+        socket.on('printTicket', function (result) {
+            var res='';
+            if(result==0){
+                res='没有可用的终端机';
+            }else{
+                var querySuccessTicketsData = angular.copy(data);
+                querySuccessTicketsData.bodyNode.curPage = $scope.curPage;
+                querySuccessTicketsData.bodyNode.limit = 8;
+                querySuccessTicketsData.cmd = 'querySuccessTickets';
+                socket.emit('data', querySuccessTicketsData);
+                res='已经发送终端机进行出票';
+            }
+            $window.alert(res);
+        });
+    }]);
