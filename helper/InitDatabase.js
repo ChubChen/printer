@@ -114,6 +114,14 @@ console.log('开始执行数据库初始化脚本');
                     cb(null);
                 });
             },function(cb){
+                mongoDBUtil.db.createCollection('WinTerms', {safe: true}, function (err, collection) {
+                    if (err) {
+                        cb(err);
+                    }
+                    console.log('已创建WinTerms');
+                    cb(null);
+                });
+            },function(cb){
                 mongoDBUtil.db.createCollection('WaitBonusTerms', {safe: true}, function (err, collection) {
                     if (err) {
                         cb(err);
