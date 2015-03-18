@@ -15,7 +15,7 @@ var TerminalControl = control.terminalControl;
 var ticketControl = control.ticketControl;
 var pageControl = control.pageControl;
 var bonusControl = control.bonusControl;
-var termCodeControl = control.termCodeControl;
+//var termCodeControl = control.termCodeControl;
 
 var target = 'dev';
 var argv = process.argv;
@@ -144,7 +144,7 @@ async.waterfall([function (cb) {
 
     bonusControl.run();
 
-    termCodeControl.run();
+    //termCodeControl.run();
 });
 
 
