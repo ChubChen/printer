@@ -43,6 +43,7 @@
                         <th>号码</th>
                         <th>状态</th>
                         <th>中奖金额</th>
+                        <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -53,6 +54,9 @@
                         <td>{{successTicket.numbers}}</td>
                         <td>{{successTicket.status}}</td>
                         <td>{{successTicket.bonus/100}}</td>
+                        <td>
+                            <button class="btn btn-primary btn-mini" ng-click="printHistoryTicketData(successTicket)">打印</button>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
