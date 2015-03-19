@@ -353,3 +353,61 @@ printerControllers.controller('historyListCtrl', ['$scope', 'socket',
         };
     }]);
 
+
+
+
+/*
+ *  Fail页控制
+ **/
+printerControllers.controller('failListCtrl', ['$scope', 'socket',
+    function ($scope, socket) {
+        /*初始化命令**/
+        var data = {};
+        var bodyNode = {};
+        data.bodyNode = bodyNode;
+        //初始化成功票据
+        var queryFailTicketsData = angular.copy(data);
+        if ($scope.curPage) {
+        } else {
+            queryFailTicketsData.bodyNode.curPage = 1;
+            queryFailTicketsData.bodyNode.limit = 8;
+        }
+        queryFailTicketsData.cmd = 'queryFailTickets';
+        socket.emit('data', queryFailTicketsData);
+        /*其它命令**/
+        //接收成功票据列表
+        socket.on('queryFailTickets', function (backNode) {
+            $scope.curPage = backNode.curPage;
+            $scope.count = backNode.count;
+            $scope.limit = backNode.limit;
+            $scope.successTickets = backNode.datas;
+            var pageCount = backNode.count / backNode.limit + 1;
+            var pageNumbers = new Array();
+            for (var i = 1; i <= pageCount; i++) {
+                pageNumbers.push(i);
+            }
+            $scope.pageNumbers = pageNumbers;
+        });
+        $scope.toPage = function (page) {
+            var countPage = $scope.count / $scope.limit;
+            if (page < 1 || page > countPage + 1) {
+                return;
+            }
+            queryFailTicketsData.bodyNode.curPage = page;
+            socket.emit('data', queryFailTicketsData);
+        };
+        $scope.query = function () {
+            queryFailTicketsData.bodyNode.curPage = 1;
+            queryFailTicketsData.bodyNode.cond = {};
+            if ($scope.id) {
+                queryFailTicketsData.bodyNode.cond.id = $scope.id;
+            }
+            if ($scope.gameCode) {
+                queryFailTicketsData.bodyNode.cond.gameCode = $scope.gameCode;
+            }
+            if ($scope.termCode) {
+                queryFailTicketsData.bodyNode.cond.termCode = $scope.termCode;
+            }
+            socket.emit('data', queryFailTicketsData);
+        };
+    }]);

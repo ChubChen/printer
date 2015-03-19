@@ -33,6 +33,10 @@ printerApp.config(['$routeProvider',
                 templateUrl: '../partials/history-list.html',
                 controller: 'historyListCtrl'
             }).
+            when('/fail', {
+                templateUrl: '../partials/fail-list.html',
+                controller: 'failListCtrl'
+            }).
             otherwise({
                 redirectTo: '/system'
             });
