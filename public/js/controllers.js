@@ -356,6 +356,11 @@ printerControllers.controller('historyListCtrl', ['$scope', 'socket',
             printHistoryTicketData.bodyNode.id = ticket.id;
             socket.emit('data', printHistoryTicketData);
         };
+
+        $scope.desTicket = function (ticket) {
+            $scope.ticket = angular.copy(ticket);
+        };
+
     }]);
 
 

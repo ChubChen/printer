@@ -53,7 +53,8 @@
                         <td>{{successTicket.status}}</td>
                         <td>{{successTicket.bonus/100}}</td>
                         <td>
-                            <button class="btn btn-primary btn-mini" ng-click="printHistoryTicket(successTicket)">打印</button>
+                            <button class="btn btn-primary btn-mini" data-toggle="modal" ng-click="desTicket(successTicket)" data-target="#desTicket">详情</button>
+                            <button class="btn btn-danger btn-mini" ng-click="printHistoryTicket(successTicket)">打印</button>
                         </td>
                     </tr>
                     </tbody>
@@ -80,4 +81,72 @@
         </div>
     </div>
     <!-- /block -->
+</div>
+
+
+<div id="desTicket" class="modal fade" tabindex='-1'role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <button class="close" type='button' data-dismiss='modal'>
+                <span aria-hidden='true'> × </span>
+                <span class="sr-only">Close</span>
+            </button>
+            <h4 id="myModalLabel" class="modal-title">彩票详请</h4>
+        </div>
+        <div class="modal-body">
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <td>彩票ID：</td>
+                    <td>{{ticket.id}}</td>
+                </tr>
+                <tr>
+                    <td>外部ID：</td>
+                    <td>{{ticket.outerId}}</td>
+                </tr>
+                <tr>
+                    <td>游戏名称：</td>
+                    <td>{{ticket.gameCode|consGameCodeDes}}</td>
+                </tr>
+                <tr>
+                    <td>期次：</td>
+                    <td>{{ticket.termCode}}</td>
+                </tr>
+                <tr>
+                    <td>投注渠道：</td>
+                    <td>{{ticket.customerId}}</td>
+                </tr>
+                <tr>
+                    <td>倍数：</td>
+                    <td>{{ticket.multiple}}</td>
+                </tr>
+                <tr>
+                    <td>金额：</td>
+                    <td>{{ticket.amount/100}} 元</td>
+                </tr>
+                <tr>
+                    <td>号码：</td>
+                    <td>{{ticket.numbers}}</td>
+                </tr>
+                <tr>
+                    <td>终端机：</td>
+                    <td>{{ticket.terminalId}}</td>
+                </tr>
+                <tr>
+                    <td> 创建时间：</td>
+                    <td>{{ticket.createTime|unixToDate}}</td>
+                </tr>
+                <tr>
+                    <td> 发到终端机时间：</td>
+                    <td>{{ticket.terminalTakeTime|unixToDate}}</td>
+                </tr>
+                <tr>
+                    <td> 终端机返回时间：</td>
+                    <td>{{ticket.terminalReturnTime|unixToDate}}</td>
+                </tr>
+                <tbody>
+            </table>
+
+        </div>
+    </div>
 </div>
