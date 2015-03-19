@@ -40,7 +40,6 @@
                         <th>彩票ID</th>
                         <th>游戏名</th>
                         <th>期次</th>
-                        <th>号码</th>
                         <th>状态</th>
                         <th>操作</th>
                     </tr>
@@ -50,7 +49,6 @@
                         <td>{{successTicket.id}}</td>
                         <td>{{successTicket.gameCode | consGameCodeDes}}</td>
                         <td>{{successTicket.termCode}}</td>
-                        <td>{{successTicket.numbers}}</td>
                         <td>{{successTicket.status}}</td>
                         <td>
                             <button class="btn btn-primary btn-mini" ng-click="printTicket(successTicket)">打印</button>
