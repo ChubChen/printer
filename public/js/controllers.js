@@ -228,6 +228,11 @@ printerControllers.controller('ticketListCtrl', ['$scope', 'socket','$window',
             }
             $window.alert(res);
         });
+
+        $scope.desTicket = function (ticket) {
+            $scope.ticket = angular.copy(ticket);
+        };
+
     }]);
 
 
