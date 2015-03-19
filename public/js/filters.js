@@ -14,7 +14,7 @@ printerFilters.filter('checkmark', ['$scope',
 printerFilters.filter('unixToDate', [
     function() {
         return function(input) {
-            var timeStr = new Date(parseInt(input) * 1000);
+            var timeStr = new Date(parseInt(input));
             var datetime = timeStr.toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
             return datetime;
         };
