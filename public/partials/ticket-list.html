@@ -134,6 +134,14 @@
                     <td> 创建时间：</td>
                     <td>{{ticket.createTime|unixToDate}}</td>
                 </tr>
+                <tr>
+                    <td> 发到终端机时间：</td>
+                    <td>{{ticket.terminalTakeTime|unixToDate}}</td>
+                </tr>
+                <tr>
+                    <td> 终端机返回时间：</td>
+                    <td>{{ticket.terminalReturnTime|unixToDate}}</td>
+                </tr>
                 <tbody>
             </table>
 
