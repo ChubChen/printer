@@ -11,12 +11,23 @@ printerFilters.filter('checkmark', ['$scope',
      };
 }]);
 
+//时间戳转日期
 printerFilters.filter('unixToDate', [
     function() {
         return function(input) {
             var timeStr = new Date(parseInt(input));
             var datetime = timeStr.toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
             return datetime;
+        };
+    }]);
+
+
+//判断是否中奖
+printerFilters.filter('ifBouns', [
+    function() {
+        return function(input) {
+            console.log(input);
+            return input;
         };
     }]);
 
