@@ -40,6 +40,7 @@
                         <th>彩票ID</th>
                         <th>游戏名</th>
                         <th>期次</th>
+                        <th>状态</th>
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -48,9 +49,10 @@
                         <td>{{successTicket.id}}</td>
                         <td>{{successTicket.gameCode | consGameCodeDes}}</td>
                         <td>{{successTicket.termCode}}</td>
+                        <td>出票成功</td>
                         <td>
                             <button class="btn btn-primary btn-mini" ng-click="printTicket(successTicket)">打印</button>
-                            <button class="btn btn-primary btn-mini" ng-click="printTicket(successTicket)">详情</button>
+                            <button class="btn btn-primary btn-mini" ng-click="desTicket(successTicket)" data-target="#desTicket">详情</button>
                         </td>
                     </tr>
                     </tbody>
@@ -77,4 +79,47 @@
         </div>
     </div>
     <!-- /block -->
+</div>
+
+
+<div id="desTicket" class="modal fade" tabindex='-1'role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+    <div class="modal-dialog">
+        <div class="modal-header">
+            <button class="close" type='button' data-dismiss='modal'>
+                <span aria-hidden='true'> × </span>
+                <span class="sr-only">Close</span>
+            </button>
+            <h4 id="myModalLabel" class="modal-title">创建用户</h4>
+        </div>
+        <div class="modal-body">
+            <form action="addUser" id="form_sample_1" class="form-horizontal">
+                <fieldset>
+                    <div class="alert alert-error hide">
+                        <button class="close" data-dismiss="alert"></button>
+                        请确认所填项是否正确
+                    </div>
+                    <div class="alert alert-success hide">
+                        <button class="close" data-dismiss="alert"></button>
+                        Your form validation is successful!
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">用户名<span class="required">*</span></label>
+                        <div class="controls">
+                            <input type="text" ng-model="user.userName" name="userName" data-required="1" class="span6 m-wrap"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">密码<span class="required">*</span></label>
+                        <div class="controls">
+                            <input type="text" ng-model="user.passWord" name="passWord" data-required="1" class="span6 m-wrap"/>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">确认提交</button>
+                        <button type="button" class="btn"  data-dismiss='modal'>Cancel</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
 </div>
