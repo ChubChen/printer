@@ -26,7 +26,11 @@ printerFilters.filter('unixToDate', [
 printerFilters.filter('ifBouns', [
     function() {
         return function(input) {
-            console.log(input);
+            if(input==undefined){
+                input='未中奖';
+            }else{
+                input=input/100+'元';
+            }
             return input;
         };
     }]);
