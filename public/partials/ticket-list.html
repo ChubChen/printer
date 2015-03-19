@@ -97,6 +97,34 @@
                     <td>彩票ID：</td>
                     <td>{{ticket.id}}</td>
                 </tr>
+                <tr>
+                    <td>外部ID：</td>
+                    <td>{{ticket.outerId}}</td>
+                </tr>
+                <tr>
+                    <td>游戏名称：</td>
+                    <td>{{ticket.gameCode|consGameCodeDes}}</td>
+                </tr>
+                <tr>
+                    <td>期次：</td>
+                    <td>{{ticket.termCode}}</td>
+                </tr>
+                <tr>
+                    <td>投注渠道：</td>
+                    <td>{{ticket.customerId}}</td>
+                </tr>
+                <tr>
+                    <td>倍数：</td>
+                    <td>{{ticket.multiple}}</td>
+                </tr>
+                <tr>
+                    <td>金额：</td>
+                    <td>{{ticket.amount/100}}</td>
+                </tr>
+                <tr>
+                    <td>号码：</td>
+                    <td>{{ticket.numbers}}</td>
+                </tr>
 
             </table>
 
