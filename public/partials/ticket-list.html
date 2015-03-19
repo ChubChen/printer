@@ -92,7 +92,8 @@
             <h4 id="myModalLabel" class="modal-title">彩票详请</h4>
         </div>
         <div class="modal-body">
-            <table>
+            <table class="table table-bordered">
+                <tbody>
                 <tr>
                     <td>彩票ID：</td>
                     <td>{{ticket.id}}</td>
@@ -119,13 +120,13 @@
                 </tr>
                 <tr>
                     <td>金额：</td>
-                    <td>{{ticket.amount/100}}</td>
+                    <td>{{ticket.amount/100}} 元</td>
                 </tr>
                 <tr>
                     <td>号码：</td>
                     <td>{{ticket.numbers}}</td>
                 </tr>
-
+                <tbody>
             </table>
 
         </div>
