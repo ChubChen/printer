@@ -92,17 +92,14 @@
             <h4 id="myModalLabel" class="modal-title">彩票详请</h4>
         </div>
         <div class="modal-body">
-                <fieldset>
-                    <div class="control-group">
-                        <label class="control-label">彩票ID：{{ticket.id}}</label>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">密码<span class="required">*</span></label>
-                        <div class="controls">
-                            <input type="text" ng-model="user.passWord" name="passWord" data-required="1" class="span6 m-wrap"/>
-                        </div>
-                    </div>
-                </fieldset>
+            <table>
+                <tr>
+                    <td>彩票ID：</td>
+                    <td>{{ticket.id}}</td>
+                </tr>
+
+            </table>
+
         </div>
     </div>
 </div>
