@@ -126,6 +126,14 @@
                     <td>号码：</td>
                     <td>{{ticket.numbers}}</td>
                 </tr>
+                <tr>
+                    <td>终端机：</td>
+                    <td>{{ticket.terminalId}}</td>
+                </tr>
+                <tr>
+                    <td> 创建时间：</td>
+                    <td>{{ticket.createTime|unixToDate}}</td>
+                </tr>
                 <tbody>
             </table>
 

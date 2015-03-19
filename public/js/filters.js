@@ -11,6 +11,15 @@ printerFilters.filter('checkmark', ['$scope',
      };
 }]);
 
+printerFilters.filter('unixToDate', [
+    function() {
+        return function(input) {
+            var timeStr = new Date(parseInt(input) * 1000);
+            var datetime = timeStr.toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
+            return datetime;
+        };
+    }]);
+
 
 //彩票机屏幕切换
 printerFilters.filter('consStatus', [
@@ -27,6 +36,9 @@ printerFilters.filter('consStatus', [
                     break;
                 case 1200:
                     res='images/bonus.png';
+                    break;
+                case 1201:
+                    res='images/wrong.png';
                     break;
                 case 1300:
                     res='images/wrong.png';
@@ -56,13 +68,7 @@ printerFilters.filter('consGameCodeDes', [
                     res='大乐透';
                     break;
                 case 'T51':
-                    res='竞猜足球';
-                    break;
-                case 1300:
-                    res='打印';
-                    break;
-                case 1900:
-                    res='离线';
+                    res='竞彩足球';
                     break;
                 default:
                     res='未知';
@@ -87,6 +93,9 @@ printerFilters.filter('consStatusDes', [
                     break;
                 case 1200:
                     res='兑奖';
+                    break;
+                case 1201:
+                    res='兑奖中';
                     break;
                 case 1300:
                     res='打印';
