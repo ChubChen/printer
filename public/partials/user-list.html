@@ -10,35 +10,35 @@
                     <div class="btn-group">
                         <botton  class='btn btn-success' data-toggle="modal" ng-click="addUser()" data-target="#addUser">创建<i class="icon-plus icon-white"></i></botton>
                     </div>
-                    <div class="btn-group pull-right">
-                        <button data-toggle="dropdown" class="btn dropdown-toggle">Tools <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Print</a></li>
-                            <li><a href="#">Save as PDF</a></li>
-                            <li><a href="#">Export to Excel</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th>用户名</th>
-                        <th>登录密码</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr ng-cloak ng-repeat="user in users">
-                        <td>{{user.userName}}</td>
-                        <td>{{user.passWord}}</td>
-                        <td><button class="btn btn-primary" data-toggle="modal" ng-click="editUser(user)" data-target="#addUser"><i class="icon-pencil icon-white"></i>Edit</button></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <!-- /block -->
+                    <!--   <div class="btn-group pull-right">
+                          <button data-toggle="dropdown" class="btn dropdown-toggle">Tools <span class="caret"></span></button>
+                          <ul class="dropdown-menu">
+                              <li><a href="#">Print</a></li>
+                              <li><a href="#">Save as PDF</a></li>
+                              <li><a href="#">Export to Excel</a></li>
+                          </ul>
+                      </div>-->
+                  </div>
+                  <table class="table table-hover">
+                      <thead>
+                      <tr>
+                          <th>用户名</th>
+                          <th>登录密码</th>
+                          <th>操作</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr ng-cloak ng-repeat="user in users">
+                          <td>{{user.userName}}</td>
+                          <td>{{user.passWord}}</td>
+                          <td><button class="btn btn-primary" data-toggle="modal" ng-click="editUser(user)" data-target="#addUser"><i class="icon-pencil icon-white"></i>Edit</button></td>
+                      </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+      <!-- /block -->
 </div>
 
 <div id="addUser" class="modal fade" tabindex='-1'role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
