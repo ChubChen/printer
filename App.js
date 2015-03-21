@@ -141,9 +141,9 @@ async.waterfall([function (cb) {
 
     pageControl.run();
 
-    bonusControl.run();
+   // bonusControl.run();
 
-    winNumberControl.run();
+  //  winNumberControl.run();
     //termCodeControl.run();
 });
 
