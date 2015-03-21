@@ -41,6 +41,7 @@
                         <th>游戏名</th>
                         <th>期次</th>
                         <th>描述</th>
+                        <th>重出</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -49,6 +50,9 @@
                         <td>{{successTicket.gameCode | consGameCodeDes}}</td>
                         <td>{{successTicket.termCode}}</td>
                         <td>{{successTicket.failType}}</td>
+                        <td>
+                            <button class="btn btn-danger btn-mini" ng-click="rePrint(successTicket)">打印</button>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

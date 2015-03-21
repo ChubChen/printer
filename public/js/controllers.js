@@ -420,4 +420,13 @@ printerControllers.controller('failListCtrl', ['$scope', 'socket',
             }
             socket.emit('data', queryFailTicketsData);
         };
+        $scope.rePrint = function (ticket) {
+            var queryFailTicketsData = angular.copy(data);
+            queryFailTicketsData.cmd='rePrint';
+            queryFailTicketsData.bodyNode.id = ticket.id;
+            socket.emit('data', queryFailTicketsData);
+            $scope.query();
+        };
+
+
     }]);
