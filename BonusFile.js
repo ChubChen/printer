@@ -76,6 +76,7 @@ BonusFile.prototype.getTicketToBouns = function () {
     mongoDBUtil.db.collection('BTets', {safe: true}, function (err, bTets) {
         bTets.find().toArray(function (err, _bonusInfo) {
             async.eachSeries(_bonusInfo, function (infoLine,termCallBack) {
+                infoLine=infoLine.info;
                 try {
                     if (infoLine.trim() != '') {
                         log.error(infoLine);
@@ -95,8 +96,8 @@ BonusFile.prototype.getTicketToBouns = function () {
                                     ticket.bonus = bonus;
                                     ticket.bonusTime = now;
                                     if(!ticket.bonusInfo){
-                                        mongoDBUtil.db.collection('TicketsWaitBonus', {safe: true}, function (err, ticketsWaitBonus) {
-                                            ticketsWaitBonus.insert(ticket, function () {
+                                        mongoDBUtil.db.collection('Ttest', {safe: true}, function (err, Ttest) {
+                                            Ttest.insert(ticket, function () {
                                                 log.info(ticket.id + '已进入待兑奖库');
                                                 termCallBack(null);
                                             });
