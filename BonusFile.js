@@ -31,7 +31,7 @@ BonusFile.prototype.getFTPMsg = function () {
                     ftps.push(i);
                 };
                 async.eachSeries(ftps, function (index, _callback) {
-                    var name = term.gameCode + '/' + moment().format('YYYYMMDD') + '/' + term.termCode + '/' + term.gameCode + '_' + term.termCode + '_'+index+'.txt';
+                    var name = term.gameCode + '/' +'20150321' + '/' + term.termCode + '/' + term.gameCode + '_' + term.termCode + '_'+index+'.txt';
                     var now = new Date().getTime();
                     log.error(terminalCons.ftpTicketFileDir + name);
                     console.log('---'+name);
@@ -40,10 +40,14 @@ BonusFile.prototype.getFTPMsg = function () {
                             var arr = data.split('\n');
                             async.eachSeries(arr, function (item, fileReadCall) {
                                 mongoDBUtil.db.collection('BTets', {safe: true}, function (err, BTets) {
-                                    BTets.insert({info:item}, function () {
-                                        log.info(item + '已放入兑奖库');
-                                        fileReadCall(null);
-                                    });
+                                    if(item){
+                                       BTets.insert({info:item}, function () {
+                                          log.info(item + '已放入兑奖库');
+                                          fileReadCall(null);
+                                       });
+                                    }else{
+                                   fileReadCall(null);
+                                    }
                                 })
                             },function(err){
                                 _callback(null);
