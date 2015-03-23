@@ -78,6 +78,7 @@ BonusFile.prototype.getTicketToBouns = function () {
             async.eachSeries(_bonusInfo, function (infoLine,termCallBack) {
                 try {
                     if (infoLine.trim() != '') {
+                        log.error(infoLine);
                         //todo 此处应判断当前库中是否有这张票,然后再做进一步操作
                         //5@2ad27e577d504423bb9c258abeaa1291@600@[{"bonus":600,"bonusBeforeTax":600,"level":2,"count":1}]@600@15007@01,02,03,04,05@1200
                         var strArr = infoLine.split('@');
@@ -112,8 +113,7 @@ BonusFile.prototype.getTicketToBouns = function () {
                         });
                     }else{
                         termCallBack(null);
-                    }
-                    ;
+                    };
                 } catch (err) {
                     log.info('已出错');
                     log.info(infoLine);
