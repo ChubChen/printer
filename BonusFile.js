@@ -90,15 +90,15 @@ BonusFile.prototype.getTicketToBouns = function () {
                         }
                         var bonus = strArr[2];
                         mongoDBUtil.db.collection('History', {safe: true}, function (err, history) {
-                            history.findOne({id: id}, [], function (err, ticket) {
+                            history.findAndRemove({id: id}, [], function (err, ticket) {
                                 if (ticket) {
                                     delete ticket['_id'];
                                     ticket.bonus = bonus;
                                     ticket.bonusTime = now;
                                     log.error(ticket.bonusInfo);
                                     if(!ticket.bonusInfo){
-                                        mongoDBUtil.db.collection('Ttest', {safe: true}, function (err, Ttest) {
-                                            Ttest.insert(ticket, function () {
+                                        mongoDBUtil.db.collection('TicketsWaitBonus', {safe: true}, function (err, ticketsWaitBonus) {
+                                            ticketsWaitBonus.insert(ticket, function () {
                                                 log.info(ticket.id + '已进入待兑奖库');
                                                 termCallBack(null);
                                             });
