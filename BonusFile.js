@@ -64,4 +64,11 @@ BonusFile.prototype.getFTPMsg = function () {
 };
 
 var bonusFile = new BonusFile();
-bonusFile.getFTPMsg();
+
+mongoDBUtil.init(function(){
+
+    bonusFile.getFTPMsg();
+
+
+})
+
