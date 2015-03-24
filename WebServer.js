@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var socketServer = require('./SocketServer.js');
 var util = require('print_util');
 var mongoDBUtil = util.mongoDBUtil;
+var log = util.log;
 
 var memory = require('print_memory');
 var webIo = memory.webIo;
@@ -34,7 +35,7 @@ WebServer.prototype.start = function (cb) {
 
 //每次都运行的，且必须有next才会向下执行
 //    app.use(function (req, res, next) {
-//        console.log('Time: %d', Date.now());
+//        log.info('Time: %d', Date.now());
 //        next();
 //    });
 
@@ -55,10 +56,10 @@ WebServer.prototype.start = function (cb) {
             body.passWord = passWord;
         }
         ;
-        console.log(JSON.stringify(body));
+        log.info(JSON.stringify(body));
         mongoDBUtil.db.collection('customer', {safe: true}, function (err, collection) {
             collection.find(body).toArray(function (err, datas) {
-                console.log(datas);
+                log.info(datas);
                 if (datas.length == 1) {
                     var ngUserName = 'userName=' + '\'' + userName + '\'';
                     res.render('app/index', { userName: userName, ngUserName: ngUserName});
@@ -70,9 +71,9 @@ WebServer.prototype.start = function (cb) {
     });
 
     var server = app.listen(3000, function () {
-        console.log('Listening on port %d', server.address().port);
+        log.info('Listening on port %d', server.address().port);
         var io = socketServer.run(server);
-        console.log('SocketServer  Run');
+        log.info('SocketServer  Run');
         webIo.init(io);
         cb(io);
     });

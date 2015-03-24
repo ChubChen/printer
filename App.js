@@ -6,6 +6,8 @@ var async = require('async');
 var util = require('print_util');
 var dataUtil = util.dataUtil;
 var mongoDBUtil = util.mongoDBUtil;
+var log = util.log;
+
 var cons = require('print_constants');
 var msgParam = cons.msgParam;
 
@@ -15,7 +17,7 @@ var TerminalControl = control.terminalControl;
 var ticketControl = control.ticketControl;
 var pageControl = control.pageControl;
 var bonusControl = control.bonusControl;
-var winNumberControl=control.winNumberControl;
+//var winNumberControl=control.winNumberControl;
 var target = 'dev';
 var argv = process.argv;
 var kvs = {};
@@ -61,10 +63,10 @@ async.waterfall([function (cb) {
             //数据类长度
             var dataBufLen = 0;
             //接收客户端信息
-            console.log('有客户端接入：' + remoteAddress + ' ' + remotePort);
+            log.info('有客户端接入：' + remoteAddress + ' ' + remotePort);
             sock.on('data', function (data) {
                 //聚合数据流
-                console.log('######################################');
+                log.info('######################################');
                 data.copy(dataBuf, curBufLen, 0, data.length);
                 //记录当前接收长度
                 curBufLen += data.length;
@@ -73,7 +75,7 @@ async.waterfall([function (cb) {
                 if (curBufLen >= packageBufLen) {
                     //读取数据长度
                     dataBufLen = dataBuf.readInt32BE(0, packageBufLen);
-                    console.log('数据包长度：' + dataBufLen);
+                    log.info('数据包长度：' + dataBufLen);
                 } else {
                     return;
                 }
@@ -94,7 +96,7 @@ async.waterfall([function (cb) {
                         terminalControl.handle(headNode, bodyNode);
                         //处理完成后，如果对方一次性将多个命令报文一起发过来的处理
                         if (curBufLen > dataBufLen + packageBufLen) {
-                            console.log('本次有多余的字节需要处理');
+                            log.info('本次有多余的字节需要处理');
                             var othersBufLen = curBufLen - dataBufLen - packageBufLen;
                             var othersBuf = new Buffer(othersBufLen);
                             //将收到的命令多余字节暂存起来,并清空数据流
@@ -107,7 +109,7 @@ async.waterfall([function (cb) {
                             if (curBufLen >= packageBufLen) {
                                 //读取数据长度
                                 dataBufLen = dataBuf.readInt32BE(0, packageBufLen);
-                                console.log('数据包长度：' + dataBufLen);
+                                log.info('数据包长度：' + dataBufLen);
                             }
                         } else {
                             curBufLen = 0;
@@ -115,18 +117,18 @@ async.waterfall([function (cb) {
                     }
                 }
                 ;
-                console.log("结束");
+                log.info("结束");
                 // 回发该数据，客户端将收到来自服务端的数据
             });
 
             // 为这个socket实例添加一个"close"事件处理函数
             sock.on('close', function (data) {
-                console.log('CLOSED: ' +
+                log.info('CLOSED: ' +
                     remoteAddress + ' ' + remotePort);
                 terminalControl.connClose(remoteAddress);
             });
             sock.on('error', function () {
-                console.log('ERROE: ' +
+                log.info('ERROE: ' +
                     remoteAddress + ' ' + remotePort);
                 terminalControl.connClose(remoteAddress);
             })
@@ -134,8 +136,8 @@ async.waterfall([function (cb) {
         cb(null, "success");
     });
 }], function (err, data) {
-    console.log('TCP Server listening on ' + HOST + ':' + PORT);
-    console.log(data);
+    log.info('TCP Server listening on ' + HOST + ':' + PORT);
+    log.info(data);
 
     ticketControl.run();
 
