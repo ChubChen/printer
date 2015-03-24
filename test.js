@@ -7,6 +7,14 @@ mongoDBUtil.init(function (err) {
         collection.find({gameCode:"T51"}).toArray(function (err, tickets) {
             for(var key in tickets){
                 var ticket = tickets[key];
+                var ticketCache = {};
+                var numberArray = ticket.numbers.split(";")
+                for(var i = 0; i < numberArray.length; i++){
+                    var matchCode = numberArray[i].split("|")[1];
+                    var match = matchCode.substr(matchCode.length - 4);
+                    ticketCache[match] = matchCode;
+                }
+                console.log(ticketCache);
                 var results = ticket.metaTicket.split(new RegExp('周'));
                 if(results == undefined || results == null ){
                     cb('竞彩ticket.metaTicket.match(regExp)为空', null);
@@ -16,9 +24,13 @@ mongoDBUtil.init(function (err) {
                 for(var i = 0; i< results.length; i++){
                    if(i != 0){
                        var arr = results[i].split('\n\n');
-                       //console.log(arr);
-                       //console.log("&&&&"+arr[1]);
-                       var day = arr[0].split("\n")[0].replace('日', 7).replace('一', 1).replace('二', 2).replace('三', 4).replace('四', 4).replace('五', 5).replace('六', 6).replace(/[^0-9]/g, '');    ;
+                       var day = arr[0].split("\n")[0];
+                       if(arr[0].indexOf(':') > 0){
+                           var temp = arr[0].substr(0, arr[0].indexOf(':'));
+                           day = temp.replace('日', 7).replace('一', 1).replace('二', 2).replace('三', 4).replace('四', 4).replace('五', 5).replace('六', 6).replace(/[^0-9]/g,'');
+                       }else{
+                           day.replace('日', 7).replace('一', 1).replace('二', 2).replace('三', 4).replace('四', 4).replace('五', 5).replace('六', 6).replace(/[^0-9]/g, '');
+                       }
                        var resultTemp = arr[1].replace(/\n/g,'');
                        var pl = "";
                        var pType = ticket.playTypeCode;
@@ -44,34 +56,12 @@ mongoDBUtil.init(function (err) {
                            }
                            pl = resultTemp.replace(/\s+/g, '').replace(/\+/g, ',').replace(/元/g, '').replace(/负/g, 0).replace(/平/g, 1).replace(/胜/g, 3);
                        }
-                       var myDate = new Date();
-                       var Week = ['7', '1', '2', '3', '4', '5', '6'];
-                       var partStr = Week[myDate.getDay()];
-                       var n= parseInt(partStr); //当前日期
-                       var m= parseInt(day.substring(0,1));  //票面日期
-                       var now = moment().format('YYYYMMDD');
-                       if(n==m){
-                       }else if (n<m){
-                           now = moment().add(m-n, 'day').format('YYYYMMDD');
-                       }else if (n>m){
-                           if(n-m==1){
-                               now = moment().add(-1, 'day').format('YYYYMMDD');
-                           }else{
-                               now = moment().add(7-(n-m), 'day').format('YYYYMMDD');
-                           }
-                       }
-                       console.log(arr[0]);
-                       console.log(day+"****" + pl);
-                       console.log(pType);
-                       console.log(ticket.betTypeCode);
-                       resultArray.push(pType + '|' + now + day + '|' + pl);
+                       resultArray.push(pType + '|' + ticketCache[day] + '|' + pl);
                    }
                 }
-                console.log(resultArray.join(";"))
-                /*results.forEach(function (item) {
-                    var arr = item.split('\n\n');
+                console.log("新" + resultArray.join(";"))
+                console.log("原" + ticket.numbers + "\n");
 
-                    */
             }
         });
     });
