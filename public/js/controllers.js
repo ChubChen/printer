@@ -45,7 +45,6 @@ printerControllers.controller('systemListCtrl', ['$scope', 'socket',
 
         socket.on('statusChange', function (terminal) {
             var _terminal = JSON.parse(terminal);
-            console.log(_terminal);
             for (var i = 0; i < $scope.terminals.length; i++) {
                 if (_terminal.id == $scope.terminals[i].id && _terminal.status != $scope.terminals[i].status) {
                     _terminal.waitCount = $scope.terminals[i].waitCount;
@@ -156,8 +155,9 @@ printerControllers.controller('mainCtrl', ['$scope', 'socket',
 /*
  *  Ticket页控制
  **/
-printerControllers.controller('ticketListCtrl', ['$scope', 'socket','$window',
-    function ($scope, socket,$window) {
+printerControllers.controller('ticketListCtrl', ['$scope', 'socket',
+    function ($scope, socket) {
+        $scope.num=-999;
         /*初始化命令**/
         var data = {};
         var bodyNode = {};
@@ -226,10 +226,11 @@ printerControllers.controller('ticketListCtrl', ['$scope', 'socket','$window',
                 socket.emit('data', querySuccessTicketsData);
                 res='已经发送终端机进行出票';
             }
-            $window.alert(res);
+            alert(res);
         });
 
         $scope.desTicket = function (ticket) {
+            $scope.num=9999;
             $scope.ticket = angular.copy(ticket);
         };
 
@@ -241,8 +242,8 @@ printerControllers.controller('ticketListCtrl', ['$scope', 'socket','$window',
 /*
  *  Bonus页控制
  **/
-printerControllers.controller('bonusListCtrl', ['$scope', 'socket','$window',
-    function ($scope, socket,$window) {
+printerControllers.controller('bonusListCtrl', ['$scope', 'socket',
+    function ($scope, socket) {
         /*初始化命令**/
         var data = {};
         var bodyNode = {};

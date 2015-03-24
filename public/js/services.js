@@ -38,5 +38,13 @@ printerServices.factory('socket', ['$rootScope',
             }
         };
     }]);
-  
- 
+
+
+printerServices.factory('window', ['$window',
+    function ($window) {
+        return {
+            alert: function (str) {
+                $window.alert(str);
+            }
+        };
+    }]);

@@ -4,7 +4,6 @@
 var printerDirectives = angular.module('printerDirectives', []);
 
 
-
 //等待执行
 
 printerDirectives.directive('onFinish', function ($timeout) {

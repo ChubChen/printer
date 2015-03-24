@@ -106,6 +106,9 @@ printerFilters.filter('consStatusDes', [
                 case 1001:
                     res='出票中';
                     break;
+                case 1100:
+                    res='查询';
+                    break;
                 case 1200:
                     res='兑奖';
                     break;
