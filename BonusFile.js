@@ -24,43 +24,44 @@ var BonusFile = function () {
 BonusFile.prototype.getFTPMsg = function () {
     log.error('*******兑奖****** File');
     mongoDBUtil.db.collection('WaitBonusTerms', {safe: true}, function (err, waitBonusTerms) {
-        waitBonusTerms.find({status: 1200,gameCode:'T51'}).toArray(function (err, _bonusTerm) {
-            async.eachSeries(_bonusTerm, function (term,termCallBack) {
+        waitBonusTerms.find({status: 1200, gameCode: 'T51'}).toArray(function (err, _bonusTerm) {
+            async.eachSeries(_bonusTerm, function (term, termCallBack) {
                 var ftps = new Array();
                 for (var i = 0; i < 6; i++) {
                     ftps.push(i);
-                };
+                }
+                ;
                 async.eachSeries(ftps, function (index, _callback) {
-                    var name = term.gameCode + '/' +'20150321' + '/' + term.termCode + '/' + term.gameCode + '_' + term.termCode + '_'+index+'.txt';
+                    var name = term.gameCode + '/' + '20150321' + '/' + term.termCode + '/' + term.gameCode + '_' + term.termCode + '_' + index + '.txt';
                     var now = new Date().getTime();
                     log.error(terminalCons.ftpTicketFileDir + name);
-                    console.log('---'+name);
+                    log.info('---' + name);
                     fs.readFile(terminalCons.ftpTicketFileDir + name, 'UTF-8', function (err, data) {
-                        if(!err){
+                        if (!err) {
                             var arr = data.split('\n');
                             async.eachSeries(arr, function (item, fileReadCall) {
                                 mongoDBUtil.db.collection('BTets', {safe: true}, function (err, BTets) {
-                                    if(item){
-                                       BTets.insert({info:item}, function () {
-                                          log.info(item + '已放入兑奖库');
-                                          fileReadCall(null);
-                                       });
-                                    }else{
-                                   fileReadCall(null);
+                                    if (item) {
+                                        BTets.insert({info: item}, function () {
+                                            log.info(item + '已放入兑奖库');
+                                            fileReadCall(null);
+                                        });
+                                    } else {
+                                        fileReadCall(null);
                                     }
                                 })
-                            },function(err){
+                            }, function (err) {
                                 _callback(null);
                             });
-                        }else{
+                        } else {
                             _callback(null);
                         }
                     })
-                },function(err){
+                }, function (err) {
                     termCallBack(null);
                 });
 
-            },function(err){
+            }, function (err) {
                 log.error('兑奖期次及票据处理已经全部完成');
             });
         })
@@ -68,15 +69,13 @@ BonusFile.prototype.getFTPMsg = function () {
 };
 
 
-
-
 BonusFile.prototype.getTicketToBouns = function () {
     log.error('*******兑奖****** File');
     var now = new Date().getTime();
     mongoDBUtil.db.collection('BTets', {safe: true}, function (err, bTets) {
         bTets.find().toArray(function (err, _bonusInfo) {
-            async.eachSeries(_bonusInfo, function (infoLine,termCallBack) {
-                infoLine=infoLine.info;
+            async.eachSeries(_bonusInfo, function (infoLine, termCallBack) {
+                infoLine = infoLine.info;
                 try {
                     if (infoLine.trim() != '') {
                         log.info(infoLine);
@@ -96,14 +95,14 @@ BonusFile.prototype.getTicketToBouns = function () {
                                     ticket.bonus = bonus;
                                     ticket.bonusTime = now;
                                     log.error(ticket.bonusInfo);
-                                    if(!ticket.bonusInfo){
+                                    if (!ticket.bonusInfo) {
                                         mongoDBUtil.db.collection('TicketsWaitBonus', {safe: true}, function (err, ticketsWaitBonus) {
                                             ticketsWaitBonus.insert(ticket, function () {
                                                 log.info(ticket.id + '已进入待兑奖库');
                                                 termCallBack(null);
                                             });
                                         })
-                                    }else{
+                                    } else {
                                         termCallBack(null);
                                     }
                                 } else {
@@ -113,15 +112,16 @@ BonusFile.prototype.getTicketToBouns = function () {
                                 }
                             })
                         });
-                    }else{
+                    } else {
                         termCallBack(null);
-                    };
+                    }
+                    ;
                 } catch (err) {
                     log.info('已出错');
                     log.info(infoLine);
                     termCallBack(null);
                 }
-            },function(err){
+            }, function (err) {
                 log.error('兑奖期次及票据处理已经全部完成');
             });
         })
@@ -129,12 +129,63 @@ BonusFile.prototype.getTicketToBouns = function () {
 };
 
 
+BonusFile.prototype.getBonusFile = function (path) {
+    var self = this;
+    fs.readdir(path,function (err, files) {
+        //err 为错误 , files 文件名列表包含文件夹与文件
+        if (err) {
+            console.error('error:\n' + err);
+            return;
+        }
+        files.forEach(function (file) {
+            fs.stat(path + '/' + file, function (err, stat) {
+                if (err) {
+                    log.info(err);
+                    return;
+                }
+                if (stat.isDirectory()) {
+                    // 如果是文件夹遍历
+                    self.getBonusFile(path + '/' + file);
+                } else {
+                    // 读出所有的文件
+                    fs.readFile(path + '/' + file, 'UTF-8', function (err, data) {
+                        if (!err) {
+                            var arr = data.split('\n');
+                            async.eachSeries(arr, function (item, fileReadCall) {
+                                if(item){
+                                    mongoDBUtil.db.collection('CTets', {safe: true}, function (err, CTets) {
+                                        CTets.findOne({info:item},function(err,data){
+                                            if(!data){
+                                                CTets.insert({info: item}, function () {
+                                                    log.info(item + '已放入兑奖库');
+                                                    fileReadCall(null);
+                                                });
+                                            }else{
+                                                fileReadCall(null);
+                                            }
+                                        });
+                                    });
+                                }else{
+                                    fileReadCall(null);
+                                }
+                            }, function (err) {
+                            });
+                        }
+                    });
+                }
+            });
+
+        });
+    });
+};
+
 
 var bonusFile = new BonusFile();
 
-mongoDBUtil.init(function(){
+mongoDBUtil.init(function () {
 
-    bonusFile.getTicketToBouns();
+    var date=moment().format('YYYYMMDD');
+    bonusFile.getBonusFile('/data/app/issue/T51'+'/'+date);
 
 
 })
