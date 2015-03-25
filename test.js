@@ -3,8 +3,9 @@ var util = require('print_util');
 var mongoDBUtil = util.mongoDBUtil;
 //启动web服务,并获取前端io
 mongoDBUtil.init(function (err) {
-    mongoDBUtil.db.collection('History', {safe: true}, function (err, collection) {
-        collection.find({gameCode:"T51"}).toArray(function (err, tickets) {
+
+    mongoDBUtil.db.collection('TerminalPrintSuccess', {safe: true}, function (err, collection) {
+        collection.find({gameCode:"T51",'id':"00000000000000000000000000006388"}).toArray(function (err, tickets) {
             for(var key in tickets){
                 var ticket = tickets[key];
                 var ticketCache = {};
@@ -14,7 +15,6 @@ mongoDBUtil.init(function (err) {
                     var match = matchCode.substr(matchCode.length - 4);
                     ticketCache[match] = matchCode;
                 }
-                console.log(ticketCache);
                 var results = ticket.metaTicket.split(new RegExp('周'));
                 if(results == undefined || results == null ){
                     cb('竞彩ticket.metaTicket.match(regExp)为空', null);
@@ -27,9 +27,9 @@ mongoDBUtil.init(function (err) {
                        var day = arr[0].split("\n")[0];
                        if(arr[0].indexOf(':') > 0){
                            var temp = arr[0].substr(0, arr[0].indexOf(':'));
-                           day = temp.replace('日', 7).replace('一', 1).replace('二', 2).replace('三', 4).replace('四', 4).replace('五', 5).replace('六', 6).replace(/[^0-9]/g,'');
+                           day = temp.replace('日', 7).replace('一', 1).replace('二', 2).replace('三', 3).replace('四', 4).replace('五', 5).replace('六', 6).replace(/[^0-9]/g,'');
                        }else{
-                           day.replace('日', 7).replace('一', 1).replace('二', 2).replace('三', 4).replace('四', 4).replace('五', 5).replace('六', 6).replace(/[^0-9]/g, '');
+                           day = day.replace('日', 7).replace('一', 1).replace('二', 2).replace('三', 3).replace('四', 4).replace('五', 5).replace('六', 6).replace(/[^0-9]/g, '');
                        }
                        var resultTemp = arr[1].replace(/\n/g,'');
                        var pl = "";
