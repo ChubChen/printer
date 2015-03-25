@@ -3,9 +3,8 @@ var util = require('print_util');
 var mongoDBUtil = util.mongoDBUtil;
 //启动web服务,并获取前端io
 mongoDBUtil.init(function (err) {
-
-    mongoDBUtil.db.collection('TerminalPrintSuccess', {safe: true}, function (err, collection) {
-        collection.find({gameCode:"T51",'id':"00000000000000000000000000006388"}).toArray(function (err, tickets) {
+    mongoDBUtil.db.collection('History', {safe: true}, function (err, collection) {
+        collection.find({gameCode:"T51"}).toArray(function (err, tickets) {
             for(var key in tickets){
                 var ticket = tickets[key];
                 var ticketCache = {};
