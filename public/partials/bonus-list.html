@@ -41,7 +41,9 @@
                         <th>游戏名</th>
                         <th>期次</th>
                         <th>终端机</th>
+                        <th>终端机</th>描述
                         <th>状态</th>
+                        <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -50,7 +52,12 @@
                         <td>{{successTicket.gameCode | consGameCodeDes}}</td>
                         <td>{{successTicket.termCode}}</td>
                         <td>{{successTicket.terminalId}}</td>
+                        <td>{{successTicket.bonusInfo}}</td>
                         <td>{{successTicket.status}}</td>
+                        <td>
+                            <button class="btn btn-danger btn-mini" ng-click="reBonus(successTicket)">重新兑奖</button>
+                            <button class="btn btn-danger btn-mini" ng-click="printBonusTicket(successTicket)">打印</button>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

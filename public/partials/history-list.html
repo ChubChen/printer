@@ -2,7 +2,7 @@
     <!-- block -->
     <div class="block">
         <div class="navbar navbar-inner block-header">
-            <div class="muted pull-left">历史票据查询</div>
+            <div class="muted pull-left">已兑奖票据查询</div>
         </div>
         <div class="block-content collapse in">
             <div class="span12">
@@ -121,6 +121,10 @@
                 <tr>
                     <td>金额：</td>
                     <td>{{ticket.amount/100}} 元</td>
+                </tr>
+                <tr>
+                    <td>兑奖返回：</td>
+                    <td>{{ticket.bonusInfo}}</td>
                 </tr>
                 <tr>
                     <td>号码：</td>

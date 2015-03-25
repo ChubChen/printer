@@ -75,6 +75,9 @@ printerControllers.controller('systemListCtrl', ['$scope', 'socket',
             $scope.door = true;
         };
         socket.on('terminalCount', function (body) {
+            if($scope.terminals==undefined){
+                return;
+            }
             for (var i = 0; i < $scope.terminals.length; i++) {
                 if (body.terminalId == $scope.terminals[i].id) {
                     $scope.terminals[i].waitCount = body.waitCount;
@@ -293,6 +296,33 @@ printerControllers.controller('bonusListCtrl', ['$scope', 'socket',
             }
             socket.emit('data', queryWaitBounsTicketsData);
         };
+
+        $scope.printBonusTicket = function (ticket) {
+            var printBonusTicket = angular.copy(data);
+            printBonusTicket.cmd='printBonusTicket';
+            printBonusTicket.bodyNode.id = ticket.id;
+            socket.emit('data', printBonusTicket);
+        };
+
+        $scope.reBonus = function (ticket) {
+            var reBonus = angular.copy(data);
+            reBonus.cmd='reBonus';
+            reBonus.bodyNode.id = ticket.id;
+            socket.emit('data', reBonus);
+            $scope.query();
+        };
+
+        //接受打印响应
+        socket.on('printBonusTicket', function (result) {
+            var res='';
+            if(result==0){
+                res='没有可用的终端机';
+            }else{
+                res='已经发送终端机进行出票';
+            }
+            alert(res);
+        });
+
     }]);
 
 
@@ -361,6 +391,16 @@ printerControllers.controller('historyListCtrl', ['$scope', 'socket',
         $scope.desTicket = function (ticket) {
             $scope.ticket = angular.copy(ticket);
         };
+
+        socket.on('printHistoryTicketData', function (result) {
+            var res='';
+            if(result==0){
+                res='没有可用的终端机';
+            }else{
+                res='已经发送终端机进行出票';
+            }
+            alert(res);
+        });
 
     }]);
 
