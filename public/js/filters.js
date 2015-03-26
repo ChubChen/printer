@@ -85,6 +85,9 @@ printerFilters.filter('consGameCodeDes', [
                 case 'T51':
                     res='竞彩足球';
                     break;
+                case 'T52':
+                    res='竞彩篮球';
+                    break;
                 default:
                     res='未知';
             }

@@ -32,7 +32,7 @@ if (kvs.target) {
 }
 
 
-var HOST = '192.168.178.129';
+var HOST = '192.168.178.130';
 var PORT = 16777;
 
 
