@@ -10,35 +10,11 @@ console.log('开始执行数据库初始化脚本');
                 });
             },
             function(cb){
-                mongoDBUtil.db.createCollection('History', {safe: true}, function (err, collection) {
-                    if (err) {
-                        cb(err);
-                    };
-                    console.log('已创建History');
-                    cb(null);
-                });
-            }, function(cb){
                 mongoDBUtil.db.createCollection('TicketsWaitBonus', {safe: true}, function (err, collection) {
                     if (err) {
                         cb(err);
                     };
                     console.log('已创建TicketsWaitBonus');
-                    cb(null);
-                });
-            },function(cb){
-                mongoDBUtil.db.createCollection('T05Numbers', {safe: true}, function (err, collection) {
-                    if (err) {
-                        cb(err);
-                    }
-                    console.log('已创建T05Numbers');
-                    cb(null);
-                });
-            },function(cb){
-                mongoDBUtil.db.createCollection('T06Numbers', {safe: true}, function (err, collection) {
-                    if (err) {
-                        cb(err);
-                    }
-                    console.log('已创建T06Numbers');
                     cb(null);
                 });
             },function(cb){
@@ -55,14 +31,6 @@ console.log('开始执行数据库初始化脚本');
                         cb(err);
                     }
                     console.log('已创建failTicket');
-                    cb(null);
-                });
-            },function(cb){
-                mongoDBUtil.db.createCollection('orders', {safe: true}, function (err, collection) {
-                    if (err) {
-                        cb(err);
-                    }
-                    console.log('已创建orders');
                     cb(null);
                 });
             },function(cb){
@@ -87,46 +55,6 @@ console.log('开始执行数据库初始化脚本');
                         cb(err);
                     }
                     console.log('已创建wrongTicket');
-                    cb(null);
-                });
-            },function(cb){
-                mongoDBUtil.db.createCollection('test', {safe: true}, function (err, collection) {
-                    if (err) {
-                        cb(err);
-                    }
-                    console.log('已创建test');
-                    cb(null);
-                });
-            },function(cb){
-                mongoDBUtil.db.createCollection('localTerm', {safe: true}, function (err, collection) {
-                    if (err) {
-                        cb(err);
-                    }
-                    console.log('已创建localTerm');
-                    cb(null);
-                });
-            },function(cb){
-                mongoDBUtil.db.createCollection('WinNumbers', {safe: true}, function (err, collection) {
-                    if (err) {
-                        cb(err);
-                    }
-                    console.log('已创建WinNumbers');
-                    cb(null);
-                });
-            },function(cb){
-                mongoDBUtil.db.createCollection('WinTerms', {safe: true}, function (err, collection) {
-                    if (err) {
-                        cb(err);
-                    }
-                    console.log('已创建WinTerms');
-                    cb(null);
-                });
-            },function(cb){
-                mongoDBUtil.db.createCollection('WaitBonusTerms', {safe: true}, function (err, collection) {
-                    if (err) {
-                        cb(err);
-                    }
-                    console.log('已创建waitBonusTerms');
                     cb(null);
                 });
             },function(cb){
