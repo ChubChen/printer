@@ -180,13 +180,38 @@ BonusFile.prototype.getBonusFile = function (path) {
 };
 
 
+
+BonusFile.prototype.getMongDBFile = function () {
+
+    mongoDBUtil.db.collection('HadBonusTickets', {safe: true}, function (err, collection) {
+        collection.find({
+            terminalReturnTime: { $gt: 1427558400000, $lt: 1427644799000 }  //{ "takeTime" : { $gt: 1427558400000, $lt: 1427644799000 } }
+        }).toArray(function (err, tickets) {
+            if (!err && tickets) {
+                async.eachSeries(tickets, function (result, cb) {
+                    fs.appendFile('/data/file.txt', result.id + '\n', 'utf-8', function (err) {
+                        if (err) {
+                            log.info(err);
+                        } else {
+                            log.info(result.id + '已写入' + '/data/file.txt');
+                            cb(null);
+                        }
+                    });
+                }, function () {
+                    log.info('ok');
+                })
+            }
+        })
+    })
+
+}
+
+
 var bonusFile = new BonusFile();
 
 mongoDBUtil.init(function () {
 
    //var date=moment().format('YYYYMMDD');
-    bonusFile.getBonusFile('/data/app/tets');
-
-
-})
+   bonusFile.getMongDBFile();
+});
 
