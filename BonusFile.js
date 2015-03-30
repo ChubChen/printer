@@ -153,14 +153,14 @@ BonusFile.prototype.getBonusFile = function (path) {
                             var arr = data.split('\n');
                             async.eachSeries(arr, function (item, fileReadCall) {
                                 if(item){
-                                    mongoDBUtil.db.collection('CTets', {safe: true}, function (err, CTets) {
-                                        CTets.findOne({info:item},function(err,data){
-                                            if(!data){
-                                                CTets.insert({info: item}, function () {
-                                                    log.info(item + '已放入兑奖库');
+                                    mongoDBUtil.db.collection('BonusInfo', {safe: true}, function (err, CTets) {
+                                        CTets.findOne({info: item}, function (err, data) {
+                                            if (!data) {
+                                                CTets.insert({info: item, status: terminalCons.bonus.status.wait, crateTime: new Date().getTime()}, function () {
+                                                    log.info(item + '已放入兑奖信息库');
                                                     fileReadCall(null);
                                                 });
-                                            }else{
+                                            } else {
                                                 fileReadCall(null);
                                             }
                                         });
@@ -184,8 +184,8 @@ var bonusFile = new BonusFile();
 
 mongoDBUtil.init(function () {
 
-    var date=moment().format('YYYYMMDD');
-    bonusFile.getBonusFile('/data/app/issue/T51'+'/'+date);
+   //var date=moment().format('YYYYMMDD');
+    bonusFile.getBonusFile('/data/app/tets');
 
 
 })
