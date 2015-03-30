@@ -61,6 +61,9 @@ printerFilters.filter('consStatus', [
                 case 1900:
                     res='images/unline.png';
                     break;
+                case 9999:
+                    res='images/wrong.png';
+                    break;
                 default:
                     res='images/wrong.png';
             }
@@ -123,6 +126,9 @@ printerFilters.filter('consStatusDes', [
                     break;
                 case 1900:
                     res='离线';
+                    break;
+                case 9999:
+                    res='忙碌';
                     break;
                 default:
                     res='出错';
