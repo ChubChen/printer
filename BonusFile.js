@@ -153,6 +153,7 @@ BonusFile.prototype.getBonusFile = function (path) {
                             var arr = data.split('\n');
                             async.eachSeries(arr, function (item, fileReadCall) {
                                 if(item){
+                                    log.error(item);
                                     mongoDBUtil.db.collection('BonusInfo', {safe: true}, function (err, CTets) {
                                         CTets.findOne({info: item}, function (err, data) {
                                             if (!data) {
@@ -212,6 +213,6 @@ var bonusFile = new BonusFile();
 mongoDBUtil.init(function () {
 
    //var date=moment().format('YYYYMMDD');
-   bonusFile.getMongDBFile();
+   bonusFile.getBonusFile('/data/app/tets/');
 });
 
