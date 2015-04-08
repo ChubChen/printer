@@ -21,7 +21,7 @@ WebServer.prototype.start = function (cb) {
     app.set('views', __dirname + '/views');
 
     //设置视图解析
-    app.set('view engine', 'jade')
+    app.set('view engine', 'jade');
 
     //public文件夹下面的文件，都暴露出来，客户端访问的时候，不需要使用public路径
     app.use(express.static(__dirname + '/public'));
