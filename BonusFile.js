@@ -184,13 +184,16 @@ BonusFile.prototype.getBonusFile = function (path) {
 
 BonusFile.prototype.getMongDBFile = function () {
 
-    mongoDBUtil.db.collection('HadBonusTickets', {safe: true}, function (err, collection) {
+    mongoDBUtil.db.collection('TerminalPrintSuccess', {safe: true}, function (err, collection) {
         collection.find({
-            terminalReturnTime: { $gt: 1427558400000, $lt: 1427644799000 }  //{ "takeTime" : { $gt: 1427558400000, $lt: 1427644799000 } }
+            customerId: 'Q0002',
+            gameCode:'T52'
+            //{ "takeTime" : { $gt: 1427558400000, $lt: 1427644799000 } }
         }).toArray(function (err, tickets) {
             if (!err && tickets) {
                 async.eachSeries(tickets, function (result, cb) {
-                    fs.appendFile('/data/file.txt', result.id + '\n', 'utf-8', function (err) {
+
+                    fs.appendFile('/data/lancai.txt',result.id+'_'+result.ticketSeq+'_'+result.ticketPwd2+'\n', 'utf-8', function (err) {
                         if (err) {
                             log.info(err);
                         } else {
@@ -198,6 +201,7 @@ BonusFile.prototype.getMongDBFile = function () {
                             cb(null);
                         }
                     });
+
                 }, function () {
                     log.info('ok');
                 })
@@ -211,8 +215,8 @@ BonusFile.prototype.getMongDBFile = function () {
 var bonusFile = new BonusFile();
 
 mongoDBUtil.init(function () {
-
    //var date=moment().format('YYYYMMDD');
-   bonusFile.getBonusFile('/data/app/tets/');
+
+   bonusFile.getMongDBFile();
 });
 
