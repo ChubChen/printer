@@ -67,6 +67,8 @@ async.waterfall([function (cb) {
             sock.on('data', function (data) {
                 //聚合数据流
                 log.info('######################################');
+                log.info('接收来自: ' +
+                    remoteAddress + ' ' + remotePort);
                 data.copy(dataBuf, curBufLen, 0, data.length);
                 //记录当前接收长度
                 curBufLen += data.length;
@@ -127,8 +129,6 @@ async.waterfall([function (cb) {
                     remoteAddress + ' ' + remotePort);
                 log.info('CLOSED+REASON: ' + err);
                 terminalControl.connClose(remoteAddress);
-                terminalControl.connClose(remoteAddress);
-
             });
             sock.on('error', function (err) {
                 log.info('ERROE: ' +
