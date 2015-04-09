@@ -122,14 +122,18 @@ async.waterfall([function (cb) {
             });
 
             // 为这个socket实例添加一个"close"事件处理函数
-            sock.on('close', function (data) {
+            sock.on('close', function (err) {
                 log.info('CLOSED: ' +
                     remoteAddress + ' ' + remotePort);
+                log.info('CLOSED+REASON: ' + err);
                 terminalControl.connClose(remoteAddress);
+                terminalControl.connClose(remoteAddress);
+
             });
-            sock.on('error', function () {
+            sock.on('error', function (err) {
                 log.info('ERROE: ' +
                     remoteAddress + ' ' + remotePort);
+                log.info('ERROE+REASON: ' + err);
                 terminalControl.connClose(remoteAddress);
             })
         }).listen(PORT, HOST);
