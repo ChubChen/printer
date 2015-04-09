@@ -42,7 +42,25 @@ var saomiao = function () {
         {"41": 1, "22": 2, "14": 8}
     ];
     self.scoreRow = 8;
-    self.shunXuArray = [1,0,0,3];
+    self.mixConf = [
+        {"023": 1, "021": 2, "020": 4},
+        {"013": 1, "011": 2, "010": 4},
+        {"0310": 1, "0342": 2, "0324": 4, "0301": 8},
+        {"0320": 1, "0350": 2, "0305": 4, "0302": 8},
+        {"0321": 1, "0351": 2, "0315": 4, "0312": 8},
+        {"0330": 1, "0352": 2, "0325": 4, "0303": 8},
+        {"0331": 1, "0390": 2, "0309": 4, "0313": 8},
+        {"0332": 1, "0300": 2, "0333": 4, "0323": 8},
+        {"0340": 1, "0311": 2, "0399": 4, "0304": 8},
+        {"0341": 1, "0322": 2, "0314": 8},
+        {"0433": 1, "0431": 2, "0430": 4 },
+        {"0413": 1, "0411": 2, "0410": 4},
+        {"0403": 1, "0401": 2, "0400": 4},
+        {"050": 1, "051": 2, "052": 4, "053": 8},
+        {"054": 1, "055": 2, "056": 4, "057": 8}
+    ];
+    self.mixRow = 15;
+    self.shunXuArray = [1,0,2];
 
 
 
@@ -81,14 +99,21 @@ saomiao.prototype.start = function (ticket) {
     ];
     self.scoreRow = 8;
 
+    var ticket = {
+        gameCode:'T51', pType:'02', bType:'21', amount:200,
+        multiple:1, outerId:"",
+        number:'02|201504024001|3;02|201504024002|3'
+    }
 
     var numberArray = ticket.number.split(";");
     var weekDay = new Array();
     var matchArray = new Array();
     var resultArray = new Array();
+    var playArray = new Array();
     for (var i = 0; i < numberArray.length; i++) {
         var temp = numberArray[i].split("|");
         weekDay.push(temp[1].substr(temp[1].length - 4, 1));
+        playArray.push(temp[0]);
         matchArray.push(temp[1].substr(temp[1].length - 3));
         resultArray.push(temp[2]);
     }
@@ -139,9 +164,43 @@ saomiao.prototype.trans = function(confObj, row, array){
    }
    console.log(resultArray.join(""));
    return resultArray.join("");
-}
+};
+
+saomiao.prototype.transHun = function(confObj, row, array, playArray){
+    var self = this;
+    var resultArray = new Array();
+    resultArray.push("00 01 00 00 ");
+    for(var i = 0; i < row ; i++){
+        var bool = true;
+        for(var j = 0; j< 3; j++){
+            if(j == 2 && bool ){
+                bool = false;
+                j--;
+                resultArray.push(" 0");
+                continue;
+            }
+            var result = 0;
+            if(array[self.shunXuArray[j]]){
+                var tempArray = array[self.shunXuArray[j]].split(',');
+                var playType = playArray[self.shunXuArray[j]];
+                for(var k = 0 ;k < tempArray.length; k++){
+                    var temp = playType+tempArray[k];
+                    if(confObj[i][temp]){
+                        result += confObj[i][temp];
+                    }
+                }
+            }
+            resultArray.push(result);
+        }
+        resultArray.push(" ");
+    }
+    console.log(resultArray.join(""));
+    return resultArray.join("");
+};
 
 saomiao.prototype.changciTrans = function (match) {
+    var self = this;
+
     var Obj = {"0": "0", "1": "1", "2": "2", 3: "3", "4": "4", "5": "8", "6": "6", "7": "a", "8": "b", "9": "c"};
     var weekArray = new Array();
     for (var i = 0; i < 3; i++) {
@@ -215,4 +274,4 @@ saomiao.prototype.btypeTrans =  function(bType, multiple){
 
 var test = new saomiao();
 //test.start();
-test.trans(test.winConf, test.winRow, ["1,3","1","0,1"]);
+test.transHun(test.mixConf, test.mixRow, ["3,1","31,99,12","33,00,31"],["01","03","04"]);
