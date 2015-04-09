@@ -100,9 +100,9 @@ saomiao.prototype.start = function (ticket) {
     self.scoreRow = 8;
 
     var ticket = {
-        gameCode:'T51', pType:'02', bType:'21', amount:200,
+        gameCode:'T51', pType:'06', bType:'21', amount:200,
         multiple:1, outerId:"",
-        number:'02|201504024001|3;02|201504024002|3'
+        number:'03|201504094001|13,90;02|201504094002|3,1'
     }
 
     var numberArray = ticket.number.split(";");
@@ -118,8 +118,12 @@ saomiao.prototype.start = function (ticket) {
         resultArray.push(temp[2]);
     }
     //组装
-    var str = "01 1c 00 0d 00 0e 00 31 07 ";
+    var str = " ";
+    if(ticket.pType == "06"){
+        str +="00 01 ";
+    }
     str += self.trans(self.weekConf, self.weekRow, weekDay) + self.changciTrans(matchArray);
+
     if (ticket.pType == "01" || ticket.pType == "02") { //胜平负
         str += self.trans(self.winConf, self.winRow, resultArray);
     }
@@ -131,6 +135,9 @@ saomiao.prototype.start = function (ticket) {
     }
     else if (ticket.pType == "03") {//半全场
         str += self.trans(self.scoreConf, self.scoreRow, resultArray);
+    }
+    else if (ticket.pType == "06") {//半全场
+        str += self.transHun(self.mixConf, self.mixRow, resultArray, playArray);
     }
     str += self.btypeTrans(ticket.bType, ticket.multiple);
     console.log(str);
@@ -158,7 +165,7 @@ saomiao.prototype.trans = function(confObj, row, array){
                    }
                }
            }
-           resultArray.push(result);
+           resultArray.push(new Number(result).toString(16));
        }
        resultArray.push(" ");
    }
@@ -169,7 +176,6 @@ saomiao.prototype.trans = function(confObj, row, array){
 saomiao.prototype.transHun = function(confObj, row, array, playArray){
     var self = this;
     var resultArray = new Array();
-    resultArray.push("00 01 00 00 ");
     for(var i = 0; i < row ; i++){
         var bool = true;
         for(var j = 0; j< 3; j++){
@@ -190,7 +196,7 @@ saomiao.prototype.transHun = function(confObj, row, array, playArray){
                     }
                 }
             }
-            resultArray.push(result);
+            resultArray.push(new Number(result).toString(16));
         }
         resultArray.push(" ");
     }
@@ -273,5 +279,5 @@ saomiao.prototype.btypeTrans =  function(bType, multiple){
 };
 
 var test = new saomiao();
-//test.start();
-test.transHun(test.mixConf, test.mixRow, ["3,1","31,99,12","33,00,31"],["01","03","04"]);
+test.start();
+//test.transHun(test.mixConf, test.mixRow, ["13,90","3,1"],["03","02"]);
