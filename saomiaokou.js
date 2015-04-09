@@ -129,7 +129,7 @@ saomiao.prototype.start = function (ticket) {
     else if (ticket.pType == "05") {//半全场
         str += self.trans(self.halfConf, self.halfRow, resultArray);
     }
-    else if (ticket.pType == "03") {//半全场
+    else if (ticket.pType == "03") {//比分
         str += self.trans(self.scoreConf, self.scoreRow, resultArray);
     }
     str += self.btypeTrans(ticket.bType, ticket.multiple);
