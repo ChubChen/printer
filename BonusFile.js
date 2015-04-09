@@ -154,7 +154,7 @@ BonusFile.prototype.getBonusFile = function (path) {
                             async.eachSeries(arr, function (item, fileReadCall) {
                                 if(item){
                                     log.error(item);
-                                    mongoDBUtil.db.collection('BonusInfo', {safe: true}, function (err, CTets) {
+                                    mongoDBUtil.db.collection('BonusInfo20140409', {safe: true}, function (err, CTets) {
                                         CTets.findOne({info: item}, function (err, data) {
                                             if (!data) {
                                                 CTets.insert({info: item, status: terminalCons.bonus.status.wait, crateTime: new Date().getTime()}, function () {
@@ -215,8 +215,12 @@ BonusFile.prototype.getMongDBFile = function () {
 var bonusFile = new BonusFile();
 
 mongoDBUtil.init(function () {
-   //var date=moment().format('YYYYMMDD');
-
-   bonusFile.getMongDBFile();
+    var date = moment().format('YYYYMMDD');
+    var gameCodeArr = nodePlatCons.gamCodeArray;
+    for (var i = 0; i < gameCodeArr.length; i++) {
+        var gameCode = gameCodeArr[i];
+        log.error('/data/app/issue/'+gameCode + '/' + date);
+        bonusFile.getBonusFile('/data/app/issue/'+gameCode + '/' + date);
+    }
 });
 
