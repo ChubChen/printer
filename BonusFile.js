@@ -209,14 +209,85 @@ BonusFile.prototype.getMongDBFile = function () {
         })
     })
 
-}
+};
 
+
+BonusFile.prototype.getBiJiao = function () {
+
+    mongoDBUtil.db.collection('BonusInfo20140409', {safe: true}, function (err, collection) {
+        collection.find({
+            status: 1100
+            //{ "takeTime" : { $gt: 1427558400000, $lt: 1427644799000 } }
+        }).toArray(function (err, tickets) {
+            if (!err && tickets) {
+                var j=0;
+                async.eachSeries(tickets, function (result, cb) {
+                    if (result.info.trim() != '') {
+                        //todo 此处应判断当前库中是否有这张票,然后再做进一步操作
+                        //5@2ad27e577d504423bb9c258abeaa1291@600@[{"bonus":600,"bonusBeforeTax":600,"level":2,"count":1}]@600@15007@01,02,03,04,05@1200
+                        var strArr = result.info.split('@');
+                        var id = strArr[0];
+                        var length = 32 - (id + '').length;
+                        for (var i = 0; i < length; i++) {
+                            id = '0' + id;
+                        }
+                        mongoDBUtil.db.collection('HadBonusTickets', {safe: true}, function (err, CTets) {
+                            CTets.findOne({id: id}, function (err, data) {
+                                if (data) {
+                                    j++;
+                                    console.log(j);
+                                    console.log(data.id);
+                                    console.log(data.bonusInfo);
+                                    cb(null);
+                                } else {
+                                    cb(null);
+                                }
+                            });
+                        });
+                    }
+                }, function (err) {
+                    log.info('ok');
+                })
+            }
+        })
+    })
+
+};
+
+
+
+BonusFile.prototype.getWaitToWaitBonus = function () {
+
+    mongoDBUtil.db.collection('TerminalPrintSuccess', {safe: true}, function (err, collection) {
+        collection.find({
+            customerId: 'Q0002',
+            gameCode :'T52'
+            //{ "takeTime" : { $gt: 1427558400000, $lt: 1427644799000 } }
+        }).toArray(function (err, tickets) {
+            if (!err && tickets) {
+                async.eachSeries(tickets, function (result, cb) {
+
+                    mongoDBUtil.db.collection('TicketsWaitBonus', {safe: true}, function (err, ticketsWaitBonus) {
+                            //正确则放入待兑奖库中
+                            ticketsWaitBonus.insert(result, function () {
+                                log.info(result.id + '已进入待兑奖库');
+                                cb(null);
+                                //将兑奖信息状态改为已经处理
+                            });
+                    });
+
+                }, function (err) {
+                    log.info('ok');
+                })
+            }
+        })
+    })
+
+};
 
 var bonusFile = new BonusFile();
 
 mongoDBUtil.init(function () {
-   //var date=moment().format('YYYYMMDD');
-
-   bonusFile.getMongDBFile();
+    bonusFile.getBonusFile('/data/app/tets/');
 });
 
