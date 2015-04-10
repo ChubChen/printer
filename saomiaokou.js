@@ -102,9 +102,8 @@ saomiao.prototype.start = function (ticket) {
     var ticket = {
         gameCode:'T51', pType:'06', bType:'21', amount:200,
         multiple:1, outerId:"",
-        number:'03|201504094001|13,90;02|201504094002|3,1'
+        number:'02|201504105001|3;02|201504105003|3'
     }
-
     var numberArray = ticket.number.split(";");
     var weekDay = new Array();
     var matchArray = new Array();
