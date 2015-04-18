@@ -100,9 +100,9 @@ saomiao.prototype.start = function (ticket) {
     self.scoreRow = 8;
 
     var ticket = {
-        gameCode:'T51', pType:'06', bType:'21', amount:200,
-        multiple:1, outerId:"",
-        number:'03|201504094001|13,90;02|201504094002|3,1'
+        gameCode:'T51', pType:'06', bType:'31', amount:200,
+        multiple:1, outerId:'',
+        number:'03|201504094001|24;02|201504094002|0;04|201504094003|7'
     }
 
     var numberArray = ticket.number.split(";");
@@ -110,7 +110,7 @@ saomiao.prototype.start = function (ticket) {
     var matchArray = new Array();
     var resultArray = new Array();
     var playArray = new Array();
-    for (var i = 0; i < numberArray.length; i++) {
+    for (var i = 0; i < numberArray.length; i++) {giy
         var temp = numberArray[i].split("|");
         weekDay.push(temp[1].substr(temp[1].length - 4, 1));
         playArray.push(temp[0]);
