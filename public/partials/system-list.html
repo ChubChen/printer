@@ -131,16 +131,10 @@
                             <input type="text" name="id" ng-model="terminal.id"  data-required="1" class="span6 m-wrap"/>
                         </div>
                     </div>
-                    <div class="control-group" ng-show="door">
-                        <label class="control-label" >当前预设最高额度</label>
-                        <div class="controls">
-                            <p class="btn btn-mini" >{{terminal.preAmount}}</p>
-                        </div>
-                    </div>
                     <div class="control-group">
                         <label class="control-label">每天最高出票额度<span class="required">*</span></label>
                         <div class="controls">
-                            <input type="text" name="id" ng-model="terminal.preAmount"  data-required="1" class="span6 m-wrap"/>
+                            <input type="text" name="preAmount" ng-model="terminal.preAmount"  data-required="1" class="span6 m-wrap"/>
                         </div>
                     </div>
                     <div class="control-group" ng-show="door">
