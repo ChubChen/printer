@@ -43,6 +43,10 @@ var FormValidation = function () {
                 },
                 category: {
                     required: true
+                },
+                preAmount:{
+                    number:true,
+                    required:true
                 }
             },
             invalidHandler: function (event, validator) { //display error alert on form submit

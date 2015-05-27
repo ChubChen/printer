@@ -72,6 +72,7 @@ printerControllers.controller('systemListCtrl', ['$scope', 'socket',
         });
 
         $scope.addTerminal = function () {
+
             $scope.terminal = {};
             $scope.game = game;
             $scope.statusList = statusList;

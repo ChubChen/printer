@@ -134,7 +134,7 @@
                     <div class="control-group">
                         <label class="control-label">每天最高出票额度<span class="required">*</span></label>
                         <div class="controls">
-                            <input type="number" ng-model="terminal.preAmount" name="preAmount" min="0" max="1000000" integer class="span6 m-wrap"/>
+                            <input type="text" name="preAmount" ng-model="terminal.preAmount"  data-required="1" class="span6 m-wrap"/>
                         </div>
                     </div>
                     <div class="control-group" ng-show="door">

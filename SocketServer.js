@@ -5,6 +5,7 @@
 var io = require('socket.io')();
 var control = require('print_control');
 var SocketControl = control.socketControl;
+var webIo = require('print_memory').webIo;
 
 var util = require('print_util');
 var log = util.log;
@@ -31,7 +32,7 @@ io.on('connection', function (socket) {
             }else if(type == 2){
                 socket.broadcast.emit(cmd,res);
             }else if(type == 3){
-                io.emit(cmd,res);
+                webIo.io.emit(cmd,res);
             }
 
         });
