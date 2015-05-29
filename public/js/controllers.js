@@ -48,6 +48,7 @@ printerControllers.controller('systemListCtrl', ['$scope', 'socket',
             var _Obj = JSON.parse(obj);
             var array = _Obj.terminal;
             var status = _Obj.status;
+            alert(array[0]);
             for (var i = 0; i < $scope.terminals.length; i++) {
                 for(var j = 0; j < array.length; j++){
                     if($scope.terminals[i].id == array[j]){
