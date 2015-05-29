@@ -43,10 +43,15 @@ printerControllers.controller('systemListCtrl', ['$scope', 'socket',
             }
         });
 
-        socket.on('ErrorStatus',function(status){
-            console.error("********************77777777" + status);
+        socket.on('ErrorStatus',function(obj){
+            var array = obj.array;
+            var status = obj.status;
             for (var i = 0; i < $scope.terminals.length; i++) {
-                    $scope.terminals[i].status = status;
+                for(var j = 0; j < array.length; j++){
+                    if($scope.terminals[i].id == array[j]){
+                        $scope.terminals[i].status = status;
+                    }
+                }
             }
             alert('终端机发来严重错误消息。停止所有终端机不再出票。请联系技术人员查看');
         })
