@@ -44,6 +44,7 @@ printerControllers.controller('systemListCtrl', ['$scope', 'socket',
         });
 
         socket.on('ErrorStatus',function(status){
+            console.error("********************77777777" + status);
             for (var i = 0; i < $scope.terminals.length; i++) {
                     $scope.terminals[i].status = status;
             }
