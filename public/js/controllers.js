@@ -44,8 +44,9 @@ printerControllers.controller('systemListCtrl', ['$scope', 'socket',
         });
 
         socket.on('ErrorStatus',function(obj){
-            var array = obj.array;
-            var status = obj.status;
+            var _Obj = JSON.parse(obj);
+            var array = _Obj.array;
+            var status = _Obj.status;
             for (var i = 0; i < $scope.terminals.length; i++) {
                 for(var j = 0; j < array.length; j++){
                     if($scope.terminals[i].id == array[j]){
