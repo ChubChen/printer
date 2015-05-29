@@ -62,6 +62,7 @@ printerFilters.filter('consStatus', [
                     res='images/unline.png';
                     break;
                 case 9999:
+                case 1111:
                     res='images/wrong.png';
                     break;
                 default:
