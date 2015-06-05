@@ -100,6 +100,12 @@ printerControllers.controller('systemListCtrl', ['$scope', 'socket',
             $scope.terminal = angular.copy(terminal);
             $scope.door = true;
         };
+
+        $scope.editConfig = function(terminal){
+            $scope.terminal  = angular.copy(terminal);
+            $scope.configdoor = true;
+        }
+
         socket.on('terminalCount', function (body) {
             if($scope.terminals==undefined){
                 return;
