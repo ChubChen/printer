@@ -104,7 +104,16 @@ printerControllers.controller('systemListCtrl', ['$scope', 'socket',
         $scope.editConfig = function(terminal){
             $scope.terminal  = angular.copy(terminal);
             $scope.configdoor = true;
-        }
+        };
+
+        $scope.refeshAmount = function(terminal){
+            var data = {};
+            var bodyNode= {};
+            data.cmd = "refeshAmount";
+            bodyNode.id= terminal.id;
+            data.bodyNode = bodyNode;
+            socket.emit('data', data);
+        };
 
         socket.on('terminalCount', function (body) {
             if($scope.terminals==undefined){
