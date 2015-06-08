@@ -133,7 +133,7 @@ async.waterfall([function (cb) {
         cb(null, "success");
     });
 }], function (err, data) {
-    log.info('TCP Server listening on ' + prop.HOST + ':' + rop.PORT);
+    log.info('TCP Server listening on ' + prop.HOST + ':' + prop.PORT);
     log.info(data);
 
     ticketControl.run();
