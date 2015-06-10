@@ -16,6 +16,7 @@ $(function() {
 	   	$('.hide-sidebar').show();
 	  	$('#sidebar').show('fast');
 	});
+	alert(111);
 
 	$('.modal').on('hide.bs.modal', function () {
 		alert(111);
