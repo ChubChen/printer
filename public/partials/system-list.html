@@ -275,6 +275,9 @@
 <script>
     jQuery(document).ready(function() {
         FormValidation.init();
+        $('#addTerminal').on('hide.bs.modal', function () {
+            $(this).css("z-index", "-999");
+        })
     });
 </script>
 
