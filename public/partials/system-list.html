@@ -91,6 +91,9 @@
                             <div class="popover-content">终端余额：{{terminal.amount }} <br/>待出票：{{terminal.waitCount}} 张<br/> 已成功出票：{{terminal.succCount}} 张</div>
                         </div>
                     </a>
+                    <div>
+                        <input type="button" value="刷新额度" ng-click="refeshAmount(terminal)">
+                    </div>
                 </li>
             </ul>
         </div>

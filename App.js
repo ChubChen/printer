@@ -11,6 +11,9 @@ var log = util.log;
 var cons = require('print_constants');
 var msgParam = cons.msgParam;
 
+var print_util = require('print_config');
+var prop = print_util.prop;
+
 var webServer = require('./WebServer.js');
 var control = require('print_control');
 var TerminalControl = control.terminalControl;
@@ -29,16 +32,6 @@ for (var key in argv) {
 }
 if (kvs.target) {
     target = kvs.target;
-}
-
-
-var HOST = '127.0.0.1';
-var PORT = 16777;
-
-
-if (target == 'run') {
-    HOST = '192.168.0.19';
-    PORT = 16777;
 }
 
 
@@ -136,11 +129,11 @@ async.waterfall([function (cb) {
                 log.info('ERROE+REASON: ' + err);
                 terminalControl.connClose(remoteAddress);
             })
-        }).listen(PORT, HOST);
+        }).listen(prop.PORT, prop.HOST);
         cb(null, "success");
     });
 }], function (err, data) {
-    log.info('TCP Server listening on ' + HOST + ':' + PORT);
+    log.info('TCP Server listening on ' + prop.HOST + ':' + prop.PORT);
     log.info(data);
 
     ticketControl.run();
