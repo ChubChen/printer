@@ -21,4 +21,8 @@ $(function() {
 		alert(111);
 	})
 
+	$('#addTerminal').on('hide.bs.modal', function () {
+		alert(111);
+	})
+
 });
