@@ -20,3 +20,10 @@ $(function() {
 
 
 });
+
+
+jQuery(document).ready(function() {
+	$('#addTerminal').on('hide.bs.modal', function () {
+		alert('ºÙ£¬ÎÒÌıËµÄúÏ²»¶Ä£Ì¬¿ò11111111111...');
+	})
+});
