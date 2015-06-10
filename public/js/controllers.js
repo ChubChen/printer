@@ -95,7 +95,6 @@ printerControllers.controller('systemListCtrl', ['$scope', 'socket',
             $scope.door = false;
         };
         $scope.editTerminal = function (terminal) {
-            $scope.num=9999;
             $scope.game = game;
             $scope.statusList = statusList;
             $scope.hadGame = terminal.gameCode;

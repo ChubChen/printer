@@ -16,4 +16,9 @@ $(function() {
 	   	$('.hide-sidebar').show();
 	  	$('#sidebar').show('fast');
 	});
+
+	$('.modal').on('hide.bs.modal', function () {
+		alert(111);
+	})
+
 });
