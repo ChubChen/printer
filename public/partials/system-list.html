@@ -182,84 +182,6 @@
 </div>
 
 
-<div id="editConfig"  class="modal fade"  tabindex='-2' role='dialog' aria-labelledby='myconfig' aria-hidden='true'>
-    <div class="modal-dialog">
-        <div class="modal-header">
-            <button class="close" type='button' data-dismiss='modal'>
-                <span aria-hidden='true'> × </span>
-                <span class="sr-only">Close</span>
-            </button>
-            <h4 id="myconfig" class="modal-title">终端机延迟信息</h4>
-        </div>
-        <div class="modal-body">
-            <form action="editConfig" id="form_sample_2" class="form-horizontal" style="height: 500px;">
-                <fieldset>
-                    <input type="text" name="id" ng-model="terminal.id" class="hide">
-                    <div class="alert alert-error2 hide">
-                        <button class="close" data-dismiss="alert"></button>
-                        请确认所填项是否正确
-                    </div>
-                    <div class="alert alert-success2 hide">
-                        <button class="close" data-dismiss="alert"></button>
-                        Your form validation is successful!
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">排列3<span class="required">*</span></label>
-                        <div class="controls">
-                            <input type="text" name="pl3_input" ng-model="terminal.config.pl3_input"  data-required="1" class="span6 m-wrap"/>(秒)
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">大乐透<span class="required">*</span></label>
-                        <div class="controls">
-                            <input type="text" name="dlt_input" ng-model="terminal.config.dlt_input"  data-required="1" class="span6 m-wrap"/>(秒)
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">七星彩<span class="required">*</span></label>
-                        <div class="controls">
-                            <input type="text" name="qxc_input" ng-model="terminal.config.qxc_input"  data-required="1" class="span6 m-wrap"/>(秒)
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">排列5<span class="required">*</span></label>
-                        <div class="controls">
-                            <input type="text" name="pl5_input" ng-model="terminal.config.pl5_input"  data-required="1" class="span6 m-wrap"/>(秒)
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">竞彩玩法<span class="required">*</span></label>
-                        <div class="controls">
-                            <input type="text" name="jc_input" ng-model="terminal.config.jc_input"  data-required="1" class="span6 m-wrap"/>(秒)
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">兑奖延迟<span class="required">*</span></label>
-                        <div class="controls">
-                            <input type="text" name="prize" ng-model="terminal.config.prize"  data-required="1" class="span6 m-wrap"/>(秒)
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">票与票最短间隔时间<span class="required">*</span></label>
-                        <div class="controls">
-                            <input type="text" name="start_sleep" ng-model="terminal.config.start_sleep"  data-required="1" class="span6 m-wrap"/>(秒)
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">票与票最长间隔时间<span class="required">*</span></label>
-                        <div class="controls">
-                            <input type="text" name="stop_sleep" ng-model="terminal.config.stop_sleep"  data-required="1" class="span6 m-wrap"/>(秒)
-                        </div>
-                    </div>
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">确认提交</button>
-                        <button type="button" class="btn"  data-dismiss='modal'>Cancel</button>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-    </div>
-</div>
 
 
 
@@ -276,7 +198,7 @@
     jQuery(document).ready(function() {
         FormValidation.init();
         $('#addTerminal').on('hide.bs.modal', function () {
-            $(this).css("z-index", "-999");
+            $('#addTerminal').css("z-index", "-999");
         })
     });
 </script>
