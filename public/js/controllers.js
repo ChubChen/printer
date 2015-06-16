@@ -225,7 +225,7 @@ printerControllers.controller('ticketListCtrl', ['$scope', 'socket',
             $scope.limit = backNode.limit;
             for(var key in backNode.datas){
                 var ticket = backNode.datas[key];
-                ticket.metaTicket = ticket.replace('\n', "\n\r");
+                ticket.metaTicket = ticket.metaTicket.replace('\n'/g, "\n\r");
             }
             $scope.successTickets = backNode.datas;
             var pageCount = backNode.count / backNode.limit + 1;
