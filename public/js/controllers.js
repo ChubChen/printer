@@ -10,6 +10,7 @@ var printerControllers = angular.module('printerControllers', []);
 printerControllers.controller('systemListCtrl', ['$scope', 'socket',
     function ($scope, socket) {
         /*初始化命令**/
+        $scope.num=-999;
         var data = {};
         var bodyNode = {};
         data.bodyNode = bodyNode;
@@ -87,13 +88,14 @@ printerControllers.controller('systemListCtrl', ['$scope', 'socket',
         });
 
         $scope.addTerminal = function () {
-
+            $scope.num=9999;
             $scope.terminal = {};
             $scope.game = game;
             $scope.statusList = statusList;
             $scope.door = false;
         };
         $scope.editTerminal = function (terminal) {
+            $scope.num=9999;
             $scope.game = game;
             $scope.statusList = statusList;
             $scope.hadGame = terminal.gameCode;
