@@ -223,6 +223,10 @@ printerControllers.controller('ticketListCtrl', ['$scope', 'socket',
             $scope.curPage = backNode.curPage;
             $scope.count = backNode.count;
             $scope.limit = backNode.limit;
+            for(var key in backNode.datas){
+                var ticket = backNode.datas[key];
+                ticket.metaTicket = ticket.replace('\n'/g, "\n\r");
+            }
             $scope.successTickets = backNode.datas;
             var pageCount = backNode.count / backNode.limit + 1;
             var pageNumbers = new Array();
