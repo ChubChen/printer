@@ -88,8 +88,14 @@ printerFilters.filter('consGameCodeDes', [
                 case 'T01':
                     res='大乐透';
                     break;
+                case 'T02':
+                    res='七星彩';
+                    break;
                 case 'T03':
                     res='排列三';
+                    break;
+                case 'T04':
+                    res='排列五';
                     break;
                 case 'T51':
                     res='竞彩足球';
