@@ -22,6 +22,8 @@ var FormValidation = function () {
                     required: true,
                     number:true
                 },
+                gpyx_input:{ required: true,
+                    number:true},
                 dlt_input:{ required: true,
                     number:true},
                 qxc_input:{ required: true,
