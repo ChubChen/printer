@@ -71,12 +71,17 @@ printerControllers.controller('systemListCtrl', ['$scope', 'socket',
         });
 
         socket.on('changeAmount', function(obj){
-            /*var _terminal = JSON.parse(obj);
+	    var _terminal ;
+	    if(typeof obj == "string" ){
+	    	_terminal = JSON.parse(obj);
+	    }else{
+		_terminal = obj;
+ 	    }
             for (var i = 0; i < $scope.terminals.length; i++) {
                 if (_terminal.id == $scope.terminals[i].id ) {
                     $scope.terminals[i].amount = _terminal.amount;
                 }
-            }*/
+            }
         });
 
         socket.on('waitQueen', function (waitQueen) {
