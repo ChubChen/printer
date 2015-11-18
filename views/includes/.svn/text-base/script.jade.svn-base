@@ -1,0 +1,6 @@
+script(type='text/javascript', src="../vendors/jquery-1.9.1.min.js")
+script(type='text/javascript', src="../bootstrap/js/bootstrap.min.js")
+script(type='text/javascript', src="../vendors/easypiechart/jquery.easy-pie-chart.js")
+script(type='text/javascript', src="../assets/scripts.js")
+script(type='text/javascript', src="../vendors/modernizr-2.6.2-respond-1.1.0.min.js")
+script(type='text/javascript', src="../js/globalfun.js")

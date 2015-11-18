@@ -1,0 +1,105 @@
+<div class="row-fluid">
+    <!-- block -->
+    <div class="block">
+        <div class="navbar navbar-inner block-header">
+            <div class="muted pull-left">用户列表</div>
+        </div>
+        <div class="block-content collapse in">
+            <div class="span12">
+                <div class="table-toolbar">
+                    <div class="btn-group">
+                        <botton  class='btn btn-success' data-toggle="modal" ng-click="addUser()" data-target="#addUser">创建<i class="icon-plus icon-white"></i></botton>
+                    </div>
+                    <!--   <div class="btn-group pull-right">
+                          <button data-toggle="dropdown" class="btn dropdown-toggle">Tools <span class="caret"></span></button>
+                          <ul class="dropdown-menu">
+                              <li><a href="#">Print</a></li>
+                              <li><a href="#">Save as PDF</a></li>
+                              <li><a href="#">Export to Excel</a></li>
+                          </ul>
+                      </div>-->
+                  </div>
+                  <table class="table table-hover">
+                      <thead>
+                      <tr>
+                          <th>用户名</th>
+                          <th>登录密码</th>
+                          <th>操作</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr ng-cloak ng-repeat="user in users">
+                          <td>{{user.userName}}</td>
+                          <td>{{user.passWord}}</td>
+                          <td><button class="btn btn-primary" data-toggle="modal" ng-click="editUser(user)" data-target="#addUser"><i class="icon-pencil icon-white"></i>Edit</button></td>
+                      </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+      <!-- /block -->
+</div>
+
+<div id="addUser" class="modal fade" tabindex='-1'role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+   <div class="modal-dialog">
+       <div class="modal-header">
+           <button class="close" type='button' data-dismiss='modal'>
+               <span aria-hidden='true'> × </span>
+               <span class="sr-only">Close</span>
+           </button>
+           <h4 id="myModalLabel" class="modal-title">创建用户</h4>
+       </div>
+       <div class="modal-body">
+           <form action="addUser" id="form_sample_3" class="form-horizontal">
+               <fieldset>
+                   <div class="alert alert-error3 hide">
+                       <button class="close" data-dismiss="alert"></button>
+                       请确认所填项是否正确
+                   </div>
+                   <div class="alert alert-success3 hide">
+                       <button class="close" data-dismiss="alert"></button>
+                       Your form validation is successful!
+                   </div>
+                   <div class="control-group">
+                       <label class="control-label">用户名<span class="required">*</span></label>
+                       <div class="controls">
+                           <input type="text" ng-model="user.userName" name="userName" data-required="1" class="span6 m-wrap"/>
+                       </div>
+                   </div>
+                   <div class="control-group">
+                       <label class="control-label">密码<span class="required">*</span></label>
+                       <div class="controls">
+                           <input type="text" ng-model="user.passWord" name="passWord" data-required="1" class="span6 m-wrap"/>
+                       </div>
+                   </div>
+                   <div class="control-group">
+                       <label class="control-label">权限<span class="required">*</span></label>
+                       <div class="controls" id="authorityWrapper" ng-show="isRoot">超级管理员</div>
+                       <div class="controls" ng-hide="notRoot">
+                          <select name="authority" class="span6 chzn-select" multiple="multiple">
+                            <option ng-repeat="auth in auths" value="{{auth.code}}" on-finish>{{auth.name}}</option>
+                          </select>
+                       </div>
+                   </div>
+                   <div class="form-actions">
+                       <button type="submit" class="btn btn-primary">确认提交</button>
+                       <button type="button" class="btn"  data-dismiss='modal'>Cancel</button>
+                   </div>
+               </fieldset>
+           </form>
+       </div>
+   </div>
+</div>
+
+<link href="../vendors/chosen.min.css" rel="stylesheet" media="screen">
+<script src="../vendors/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="../vendors/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="../assets/form-validation.js"></script>
+
+<script>
+    jQuery(document).ready(function() {
+        FormValidation.init();
+    });
+</script>
+

@@ -1,0 +1,54 @@
+doctype html
+html(lang="en" class="no-js"  ng-app="printerApp" ng-init=ngUserInfo  )
+    head
+        include ../includes/css.jade
+        include ../includes/script.jade
+        include ../includes/angular.jade
+        include ../includes/socket.jade
+        title 出票管理系统
+    body(ng-controller="mainCtrl")
+        .navbar.navbar-fixed-top
+            .navbar-inner
+                .container-fluid
+                    a.brand(href='#') 姚记出票
+                    .nav-collapse.collapse
+                        ul.nav.pull-right
+                            li.dropdown
+                                a(href='javascript:void(0)' role='button' class='dropdown-toggle' data-toggle='dropdown')
+                                    i.icon-user
+                                    span &nbsp&nbsp&nbsp
+                                    span=userName
+                                    i.caret
+                                 ul.dropdown-menu
+                                     li
+                                         a(tabindex="-1" href="#") 个人设置
+                                     li.divider
+                                     li
+                                         a(tabindex="-1" href="/") 退出
+                        ul.nav
+                            li.active
+                                a(href='#') 系统监控
+                            li.dropdown
+                                a(href="javascript:void(0)" data-toggle="dropdown" class="dropdown-toggle") 数据查询
+                                    b.caret
+                                ul.dropdown-menu#menu1
+                                    li
+                                        a(href="#/tickets") 票据查询
+                                    li.divider
+                                    li
+                                        a(href="#/bonus") 待兑奖票查询
+                                    li
+                                        a(href="#/history") 已兑奖查询
+        .container-fluid
+            .row-fluid
+                .span3#sidebar
+                    ul.nav.nav-list.bs-docs-sidenav.nav-collapse.collapse
+                        li(ng-repeat="view in views")
+                            a(href="#/{{view.url}}")
+                                i.icon-chevron-right(ng-show='view.hasSubItems')
+                                span(ng-bind="view.name")
+                    .row-fluid(style='margin-top:30px;')
+                        .span6(style="width:180px")
+                            .well
+                                botton.btn.btn-large.btn-block(class='{{style}}' ng-click='catchTicketsStatus()') {{status}}
+                .span9#content(ng-view)

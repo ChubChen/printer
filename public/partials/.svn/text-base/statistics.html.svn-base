@@ -1,0 +1,201 @@
+<div class="row-fluid">
+    <!-- block -->
+    <div class="block">
+        <div class="navbar navbar-inner block-header">
+            <div class="muted pull-left">对账查询</div>
+        </div>
+        <div class="block-content collapse in">
+            <div class="outerWrapper">
+                <div class="innerWrapper span2"> 
+                    <div>彩种</div>
+                    <div>
+                        <select id="selectGame" multiple="multiple" ng-model="gameCode">
+                            <option value="{{key}}" ng-repeat="(key,value) in gameCodes" on-finish-render="ngRepeatFinished">{{value}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="innerWrapper span2"> 
+                    <div>状态</div>
+                    <div>
+                        <select id="selectStatus" multiple="multiple" ng-model="status">
+                            <option value="{{key}}" ng-repeat="(key,value) in statuses" on-finish-render="ngRepeatFinished">{{value}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="innerWrapper span4"> 
+                    <div>期次</div>
+                    <div>
+                        <input class="form-control" type="text" name="termCode" ng-model="termCode" placeholder="请输入期次" />
+                    </div>
+                </div>
+                <div class="innerWrapper span4"> 
+                    <div>终端机ID</div>
+                    <div>
+                        <input class="form-control" type="text" name="terminalId" ng-model="terminalId" placeholder="请输入终端机ID" />
+                    </div>
+                </div>
+            </div>
+            <div class="outerWrapper">
+                <div class="innerWrapper"> 
+                    <div>时间段</div>
+                    <div>
+                        <input type="text" name="daterange" value="01/01/2015 - 01/31/2015" style="width:280px" />
+                    </div>
+                </div>
+
+                <div class="innerWrapper"> 
+                    <button class="btn btn-default" ng-click="query()">查询</button>
+                    <button class="btn btn-default" ng-click="check()">对账</button>
+                </div>
+            </div>
+            
+            <div class="tableWrapper">
+                <div class="span6">
+                    <table class="table table-striped table-bordered">
+                        <caption><b>统计结果</b></caption>
+                        <thead>
+                            <tr>
+                                <!-- <th>当前页码</th> -->
+                                <th>记录数</th>
+                                <th>出票总金额</th>
+                                <th>税前奖金总额</th>
+                                <th>税后奖金总额</th>
+                                <!--  <th>操作状态</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                               <!-- <td ng-bind="curPage"></td> -->
+                               <td ng-bind="length"></td> 
+                                <td ng-bind="totalAmount"></td>
+                                <td ng-bind="preBouns"></td>
+                                <td ng-bind="aftBouns"></td>
+                                <!-- <td ng-bind="message"></td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- <table style="margin-top: 10px" cellpadding="0" cellspacing="0" border="0"
+                           class="table table-striped table-bordered" id="example">
+                        <caption><b>数据明细</b></caption>
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>彩票ID</th>
+                            <th>彩种</th>
+                            <th>期次</th>
+                            <th>金额</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="odd gradeX" ng-cloak ng-repeat="successTicket in successTickets">
+                            <td>{{base + $index}}</td>
+                            <td>{{successTicket.id || successTicket.ticketId | removeZero}}</td>
+                            <td>{{successTicket.gameCode | consGameCodeDes}}</td>
+                            <td>{{successTicket.termCode}}</td>
+                            <td>{{successTicket.amount}}</td>
+                        </tr>
+                        </tbody>
+                    </table> -->
+
+                  <!-- <div class="pagination text-center">
+                       <input type='hidden' id="count" ng-model="count"/>
+                       <input type='hidden' id="curPage" ng-model="curPage"/>
+                       <input type='hidden' id="limit" ng-model="limit"/>
+                   
+                       <ul>
+                           <li class="{{curPage<=1 | consPageBarDes}}">
+                               <a href="javascript:void(0)" ng-click="toPage(curPage-1,0)" class="btn btn-default">上一页</a>
+                           </li>
+                           
+                           <li ng-repeat="number in pageNumbers" on-finish-render="ngRepeatFinished">
+                               <a href="javascript:void(0)" ng-click="toPage(number)" class="pageNumber" ng-class='{currentPage:$first}' >{{number}}</a>
+                           </li>
+                   
+                           <li class="{{curPage>=count/limit| consPageBarDes}}">
+                               <a href="javascript:void(0)" ng-click="toPage(curPage+1,1)" class="btn btn-default">下一页</a>
+                           </li>
+                       </ul>
+                   
+                   
+                   </div> -->
+                                  
+                    </div>
+
+                <div class="span6">
+
+                    <table class="table table-striped table-bordered">
+                        <caption><b>平台统计结果</b></caption>
+                        <thead>
+                            <tr>
+                               <!-- <th>当前页码</th> -->
+                                <th>记录数</th>
+                                <th>出票总金额</th>
+                                <th>税前奖金总额</th>
+                                <th>税后奖金总额</th>
+                                <!-- <th>操作状态</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <!-- <td ng-bind="currentPage"></td> -->
+                                <td ng-bind="backNode.totalAccunt"></td>
+                                <td ng-bind="backNode.lotMoneySum"></td>
+                                <td ng-bind="backNode.preBonusSum"></td>
+                                <td ng-bind="backNode.aftBonusSum"></td>
+                                <!--  <td ng-bind="msg"></td>  -->
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- <table style="margin-top: 10px" cellpadding="0" cellspacing="0" border="0"
+                            class="table table-striped table-bordered" id="example">
+                         <caption><b>数据明细</b></caption>
+                         <thead>
+                         <tr>
+                             <th>序号</th>
+                             <th>彩票ID</th>
+                             <th>彩种</th>
+                             <th>期次</th>
+                             <th>金额</th>
+                         </tr>
+                         </thead>
+                         <tbody>
+                         <tr class="odd gradeX" ng-cloak ng-repeat="data in backDatas">
+                             <td>{{base + $index}}</td>
+                             <td>{{data.cpId}}</td>
+                             <td>{{data.lotId | consLotIdDes}}</td>
+                             <td>{{data.lotIssue}}</td>
+                             <td>{{data.lotMoney}}</td>
+                         </tr>
+                         </tbody>
+                     </table> --> 
+                </div>
+            </div>
+            <div class="tableWrapper">
+                <div class="span6">
+                    <table >
+                        <tbody>
+                            <tr></tr>
+                        </tbody>
+                    </table>
+            </div>
+            <div class="tableWrapper">
+                <div class="span6">
+                    <table >
+                        <tbody>
+                            <tr></tr>
+                        </tbody>
+                    </table>
+            </div>
+            <div class="tableWrapper">
+                <div class="span6">
+                    <table >
+                        <tbody>
+                            <tr></tr>
+                        </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+    <!-- /block -->
+</div>

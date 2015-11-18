@@ -1,0 +1,38 @@
+<div class="row-fluid">
+    <div class="block">
+        <div class="navbar navbar-inner block-header">
+            <div class="muted pull-left">票务设置列表</div>
+        </div>
+        <div class="block-content collapse in">
+            <div class="span12">
+                <!-- <div class="control-group"> -->
+                    <div  class="modal fade" aria-labelledby='myModalLabel'>
+                       <div class="modal-dialog">
+                         <div class="modal-body">
+                              <label class="control-label" for="multiSelect">游戏种类<span class="required">*</span></label>
+                              <div class="controls">
+                                  <select multiple="multiple" name="gameCode"  id="multiSelect" class="chzn-select span4">
+                                     <option  ng-repeat="g in game" on-finish >{{g}}</option>
+                                  </select>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<link href="../vendors/chosen.min.css" rel="stylesheet" media="screen">
+<script src="../vendors/chosen.jquery.min.js"></script>
+<script type="text/javascript" src="../vendors/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="../assets/form-validation.js"></script>
+
+<script>
+    jQuery(document).ready(function() {
+        FormValidation.init();
+    });
+</script>
+

@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js" ng-app="printerApp" ng-init=<%= ngUserInfo %>>
+<head>
+	<% include ../includes/css.ejs %>
+	<% include ../includes/script.ejs %>
+	<% include ../includes/angular.ejs %>
+	<% include ../includes/socket.ejs %>
+	<link ng-repeat="stylesheet in stylesheets" rel="stylesheet" type="text/css" ng-href="{{stylesheet}}">
+	<title ng-bind="homepageTitle"></title>
+</head>
+<body ng-controller="mainCtrl">
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<a href="#" class="brand">姚记出票</a>
+				<div class="nav-collapse collapse">
+					<ul class="nav pull-right">
+						<li class="dropdown">
+							<a href="javascript:void(0)" class="dropdown-toggle" role="button" data-toggle="dropdown">
+								<i class="icon-user"></i>
+								<span>&nbsp;&nbsp;&nbsp;</span>
+								<span><%= userName %></span>
+								<i class="caret"></i></a>
+							<ul class="dropdown-menu">
+								<li><a href="#" tabindex="-1">个人设置</a></li>
+								<li class="divider"></li>
+								<li><a href="/" tabindex="-1">退出</a></li>
+							</ul>
+						</li>
+					</ul>
+					<ul class="nav">
+						<li class="active"><a href="#">系统监控</a></li>
+						<li class="dropdown">
+							<a href="javascript:void(0)" data-toggle="dropdown" class="dropdown-toggle">数据查询<b class="caret"></b></a>
+							<ul class="dropdown-menu" id="menu1">
+								<li><a href="#/tickets">票据查询</a></li>
+								<li class="divider"></li>
+								<li><a href="#/bonus">待兑奖票查询</a></li>
+								<li><a href="#/history">已兑奖查询</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span3" id="sidebar">
+				<ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
+					<li ng-repeat="view in views"><a href="#/{{view.url}}"><i class="icon-chevron-right" ng-show="view.hasSubItems"></i><span ng-bind="view.name"></span></a></li>
+				</ul>
+				<div class="row-fluid" style="margin-top:30px;">
+					<div class="span6" style="width:180px">
+						<div class="well">
+							<botton class="btn btn-large btn-block {{style}}" ng-click="catchTicketsStatus()">{{status}}</botton>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="span9" id="content" ng-view></div>
+		</div>
+	</div>
+
+<!-- 提示音 -->
+<audio autobuffer autoloop loop controls class="hidden">
+	<source src="../media/failticketcome.WAV">
+</audio>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title" id="myModalLabel">
+               消息提醒
+            </h4>
+         </div>
+         <div class="modal-body">
+            出现新错误票，错误票ID：<span ng-bind="failTicketId" class="importantText"></span>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-default" 
+               data-dismiss="modal">知道了
+            </button>
+            <button type="button" class="btn btn-primary" ng-click="toFailTicketPage()">
+               赶快查看
+            </button>
+         </div>
+      </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</body>
+</html>
