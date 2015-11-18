@@ -35,12 +35,12 @@ if (kvs.target) {
 }
 
 
-async.waterfall([function (cb) {
+async.waterfall([ function (cb) {
     //启动web服务,并获取前端io
     mongoDBUtil.init(function (err) {
         cb(err);
     });
-}, function (cb) {
+},function (cb) {
     //启动web服务,并获取前端io
     webServer.start(function (io) {
         net.createServer(function (sock) {
@@ -62,6 +62,7 @@ async.waterfall([function (cb) {
                 log.info('######################################');
                 log.info('接收来自: ' +
                     remoteAddress + ' ' + remotePort);
+
                 data.copy(dataBuf, curBufLen, 0, data.length);
                 //记录当前接收长度
                 curBufLen += data.length;
@@ -70,7 +71,7 @@ async.waterfall([function (cb) {
                 if (curBufLen >= packageBufLen) {
                     //读取数据长度
                     dataBufLen = dataBuf.readInt32BE(0, packageBufLen);
-                    log.info('数据包长度：' + dataBufLen);
+                    log.info('数据包长度1：' + dataBufLen);
                 } else {
                     return;
                 }
@@ -85,7 +86,9 @@ async.waterfall([function (cb) {
                     } else {
                         var bodyNodeBuf = new Buffer(dataBufLen + packageBufLen - msgParam.headBufLen);
                         dataBuf.copy(bodyNodeBuf, 0, msgParam.headBufLen, dataBufLen + packageBufLen);
-                        //解析bodyNode
+                        //解析bodyNode引进
+                        console.log(bodyNodeBuf.toString());
+                        log.info("handle003已经连接上了");
                         var bodyNode = dataUtil.handleForBodyNode(headNode, bodyNodeBuf);
                         //可以分流处理不同接口了
                         terminalControl.handle(headNode, bodyNode);
@@ -104,7 +107,7 @@ async.waterfall([function (cb) {
                             if (curBufLen >= packageBufLen) {
                                 //读取数据长度
                                 dataBufLen = dataBuf.readInt32BE(0, packageBufLen);
-                                log.info('数据包长度：' + dataBufLen);
+                                log.info('数据包长度2：' + dataBufLen);
                             }
                         } else {
                             curBufLen = 0;
@@ -134,7 +137,7 @@ async.waterfall([function (cb) {
     });
 }], function (err, data) {
     log.info('TCP Server listening on ' + prop.HOST + ':' + prop.PORT);
-    log.info(data);
+    log.info(err+"------------------err");
 
     ticketControl.run();
 
@@ -142,7 +145,7 @@ async.waterfall([function (cb) {
 
     bonusControl.run();
 
-    winNumberControl.run();
+    //winNumberControl.run();
     //termCodeControl.run();
 });
 

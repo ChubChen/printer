@@ -1,3 +1,4 @@
+/* jshint -W097 */
 'use strict';
 
 /* App Module */
@@ -5,9 +6,10 @@
 var printerApp = angular.module('printerApp', [
     'ngRoute',
     'printerControllers',
+    'printerGlobalParam',
     'printerFilters',
     'printerServices',
-    'printerDirectives'
+    'printerDirectives',
 ]);
 
 printerApp.config(['$routeProvider',
@@ -36,6 +38,18 @@ printerApp.config(['$routeProvider',
             when('/fail', {
                 templateUrl: '../partials/fail-list.html',
                 controller: 'failListCtrl'
+            }).
+            when('/statistics', {
+                templateUrl: '../partials/statistics.html',
+                controller: 'statisticsCtrl'
+            }).
+            when('/waitbonus', {
+                templateUrl: '../partials/wait-bonus-list.html',
+                controller: 'waitBonusCtrl'
+            }).
+            when('/ticketrule', {
+                templateUrl: '../partials/pw-rule-list.html',
+                controller: 'ticketRuleCtrl'
             }).
             otherwise({
                 redirectTo: '/system'

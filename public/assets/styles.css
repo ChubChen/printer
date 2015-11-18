@@ -217,3 +217,72 @@ body {
 .dataTables_length label{
   margin-left: 30px;
 }
+
+#authorityWrapper{
+  line-height: 31px;
+}
+
+.importantText{
+  color: red;
+}
+
+.currentPage{
+  background-color: #f5f5f5 !important;
+}
+
+.pagination{
+  padding-top: 10px;
+}
+
+.pagination ul>li>a:active, .pagination ul>li>a:hover, .pagination ul>li>a:focus, .pagination ul>li>a.btn.btn-default{
+  color: #08c !important;
+}
+
+.block-content.collapse.in > .span12{
+  margin-bottom: 100px;
+}
+
+.daterangepicker select.hourselect, .daterangepicker select.minuteselect, .daterangepicker select.secondselect, .daterangepicker select.ampmselect{
+  width:52px !important;
+}
+
+.daterangepicker .calendar{
+  max-width: none !important;
+}
+
+.daterangepicker .input-mini{
+  width: 300px !important;
+}
+
+.ampmselect{
+  display: none !important;
+}
+
+.calendar-time>div{
+  width: 200px !important;
+}
+
+.innerWrapper{
+  display: inline-block;
+}
+
+.innerWrapper>div{
+  display: inline-block;
+}
+
+.outerWrapper:first-child+.outerWrapper>.innerWrapper:last-child{
+  float: right;
+}
+.innerWrapper>button{
+  float: left;
+  margin-right: 20px;
+}
+
+.outerWrapper{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.table th, .table td{
+  height: 20px;
+}

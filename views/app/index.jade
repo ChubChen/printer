@@ -1,5 +1,5 @@
 doctype html
-html(lang="en" class="no-js"  ng-app="printerApp" ng-init=ngUserName  )
+html(lang="en" class="no-js"  ng-app="printerApp" ng-init=ngUserInfo  )
     head
         include ../includes/css.jade
         include ../includes/script.jade
@@ -10,7 +10,7 @@ html(lang="en" class="no-js"  ng-app="printerApp" ng-init=ngUserName  )
         .navbar.navbar-fixed-top
             .navbar-inner
                 .container-fluid
-                    a.brand(href='#') Printer  System
+                    a.brand(href='#') 姚记出票
                     .nav-collapse.collapse
                         ul.nav.pull-right
                             li.dropdown
@@ -43,17 +43,10 @@ html(lang="en" class="no-js"  ng-app="printerApp" ng-init=ngUserName  )
             .row-fluid
                 .span3#sidebar
                     ul.nav.nav-list.bs-docs-sidenav.nav-collapse.collapse
-                        li
+                        li(ng-repeat="view in views")
                             a(href="#/system")
-                                i.icon-chevron-right
-                                span 系统监控
-                        li
-                            a(href="#/fail")
-                                span 错误票处理
-                        li
-                            a(href="#/user")
-                                i.icon-chevron-right
-                                span 用户管理
+                                i.icon-chevron-right(ng-show='view.hasSubItems')
+                                span(ng-bind="view.name")
                     .row-fluid(style='margin-top:30px;')
                         .span6(style="width:180px")
                             .well

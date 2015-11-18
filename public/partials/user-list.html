@@ -51,13 +51,13 @@
            <h4 id="myModalLabel" class="modal-title">创建用户</h4>
        </div>
        <div class="modal-body">
-           <form action="addUser" id="form_sample_1" class="form-horizontal">
+           <form action="addUser" id="form_sample_3" class="form-horizontal">
                <fieldset>
-                   <div class="alert alert-error hide">
+                   <div class="alert alert-error3 hide">
                        <button class="close" data-dismiss="alert"></button>
                        请确认所填项是否正确
                    </div>
-                   <div class="alert alert-success hide">
+                   <div class="alert alert-success3 hide">
                        <button class="close" data-dismiss="alert"></button>
                        Your form validation is successful!
                    </div>
@@ -73,6 +73,15 @@
                            <input type="text" ng-model="user.passWord" name="passWord" data-required="1" class="span6 m-wrap"/>
                        </div>
                    </div>
+                   <div class="control-group">
+                       <label class="control-label">权限<span class="required">*</span></label>
+                       <div class="controls" id="authorityWrapper" ng-show="isRoot">超级管理员</div>
+                       <div class="controls" ng-hide="notRoot">
+                          <select name="authority" class="span6 chzn-select" multiple="multiple">
+                            <option ng-repeat="auth in auths" value="{{auth.code}}" on-finish>{{auth.name}}</option>
+                          </select>
+                       </div>
+                   </div>
                    <div class="form-actions">
                        <button type="submit" class="btn btn-primary">确认提交</button>
                        <button type="button" class="btn"  data-dismiss='modal'>Cancel</button>
@@ -83,6 +92,8 @@
    </div>
 </div>
 
+<link href="../vendors/chosen.min.css" rel="stylesheet" media="screen">
+<script src="../vendors/chosen.jquery.min.js"></script>
 <script type="text/javascript" src="../vendors/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="../assets/form-validation.js"></script>
 

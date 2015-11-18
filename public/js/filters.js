@@ -1,3 +1,5 @@
+
+/* jshint -W097 */
 'use strict';
 
 /* Filters */
@@ -26,10 +28,10 @@ printerFilters.filter('unixToDate', [
 printerFilters.filter('ifBouns', [
     function() {
         return function(input) {
-            if(input==undefined){
+            if(input === undefined){
                 input='未中奖';
             }else{
-                input=input/100+'元';
+                input=input+'元';
             }
             return input;
         };
@@ -74,6 +76,43 @@ printerFilters.filter('consStatus', [
         };
     }]);
 
+//颜色切换
+printerFilters.filter('consColor', [
+    function() {
+        return function(input) {
+            var res;
+            switch(input)
+            {
+                case 1000:
+                    res='blue';
+                    break;
+                case 1100:
+                    res='green';
+                    break;
+                case 1200:
+                    res='yellow';
+                    break;
+                case 1201:
+                    res='red';
+                    break;
+                case 1300:
+                    res='red';
+                    break;
+                case 1900:
+                    res='gray';
+                    break;
+                case 9999:
+                    res='red';
+                    break;
+                case 1111:
+                    res='red';
+                    break;
+                default:
+                    res='red';
+            }
+            return res;
+        };
+    }]);
 
 //游戏代码视图转义
 printerFilters.filter('consGameCodeDes', [
@@ -101,6 +140,43 @@ printerFilters.filter('consGameCodeDes', [
                     res='竞彩足球';
                     break;
                 case 'T52':
+                    res='竞彩篮球';
+                    break;
+                case 'F01':
+                     res='双色球';
+                     break;
+                default:
+                    res='未知';
+            }
+            return res;
+        };
+    }]);
+
+printerFilters.filter('consLotIdDes', [
+    function() {
+        return function(input) {
+            var res;
+            switch(input)
+            {
+                case 21406:
+                    res='11选5';
+                    break;
+                case 23529:
+                    res='大乐透';
+                    break;
+                case 10022:
+                    res='七星彩';
+                    break;
+                case 33:
+                    res='排列三';
+                    break;
+                case 35:
+                    res='排列五';
+                    break;
+                case 42:
+                    res='竞彩足球';
+                    break;
+                case 43:
                     res='竞彩篮球';
                     break;
                 default:
@@ -149,7 +225,6 @@ printerFilters.filter('consStatusDes', [
         };
     }]);
 
-
 //pageBar
 printerFilters.filter('consPageBarDes', [
     function() {
@@ -160,6 +235,33 @@ printerFilters.filter('consPageBarDes', [
             }else{
                 res='';
             }
+            return res;
+        };
+    }]);
+
+//bonusList getTicketId
+printerFilters.filter('getTicketId', [
+    function() {
+        return function(input) {
+            var res = input.replace('.ticket','');            
+            return res;
+        };
+    }]);
+
+//remove ticket id zero
+printerFilters.filter('removeZero', [
+    function() {
+        return function(input) {
+            var array = input.split('');
+            for(var i=0; i<array.length; i++){
+                if(array[i] === '0'){
+                    array.splice(i,1);
+                    i--;
+                }else{
+                    break;
+                }
+            }
+            var res = array.join('');        
             return res;
         };
     }]);
