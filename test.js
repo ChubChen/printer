@@ -1,11 +1,12 @@
-/*
+
 var moment = require('moment');
 var util = require('print_util');
 var mongoDBUtil = util.mongoDBUtil;
 var cons = require('print_constants');
+var async = require('async');
 
 var dataTransCons = cons.dataTransCons;
-
+/*
 //启动web服务,并获取前端io
 var test = function(){
 
@@ -151,5 +152,11 @@ testT52.T52();
 
 
 */
-var test = "第1张   20463775662150785541#00179375[中奖注数:1注*2倍应退注数:0注*2倍中奖金额:5.92元";
-console.log(test.indexOf("中奖金额"))
+var test = "[中奖注数:1注*2倍\n应退注数:0注*2倍\n中奖金额:5.92元\n应退金额:0.00元\n兑奖状态:可以兑奖\n应付金额:5.92元\n应付金额=中奖金额+应退金额\n第1页/共1页";
+var arr = test.split('\n');
+async.each(arr, function (item) {
+    if (item.indexOf('中奖金额:') != -1) {
+        console.log(parseInt(item.replace(/\D/g, '')));
+    }
+}, function (err) {
+})
