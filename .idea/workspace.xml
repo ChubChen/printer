@@ -26,7 +26,7 @@
       <file leaf-file-name="BonusControl.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/node_modules/print_control/BonusControl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6745" max-vertical-offset="13482">
+            <state vertical-scroll-proportion="0.0" vertical-offset="6205" max-vertical-offset="13482">
               <caret line="260" column="37" selection-start-line="260" selection-start-column="37" selection-end-line="260" selection-end-column="37" />
               <folding />
             </state>
@@ -43,11 +43,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TerminalControl.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="TerminalControl.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/node_modules/print_control/TerminalControl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.4" vertical-offset="378" max-vertical-offset="38484">
-              <caret line="35" column="32" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="32" />
+            <state vertical-scroll-proportion="1.7041198" vertical-offset="16807" max-vertical-offset="38520">
+              <caret line="959" column="61" selection-start-line="959" selection-start-column="61" selection-end-line="959" selection-end-column="61" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2187" max-vertical-offset="2880">
+              <caret line="144" column="11" selection-start-line="144" selection-start-column="11" selection-end-line="144" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -63,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataUtil.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DataUtil.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/node_modules/print_util/DataUtil.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.033088237" vertical-offset="5886" max-vertical-offset="7434">
-              <caret line="328" column="6" selection-start-line="328" selection-start-column="6" selection-end-line="328" selection-end-column="6" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="5886" max-vertical-offset="7434">
+              <caret line="350" column="0" selection-start-line="350" selection-start-column="0" selection-end-line="350" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -120,10 +130,11 @@
         <option value="$PROJECT_DIR$/node_modules/print_source/NodePlatSource.js" />
         <option value="$PROJECT_DIR$/node_modules/print_control/TicketControl.js" />
         <option value="$PROJECT_DIR$/node_modules/print_control/BonusControl.js" />
-        <option value="$PROJECT_DIR$/node_modules/print_control/TerminalControl.js" />
         <option value="$PROJECT_DIR$/node_modules/print_constants/TerminalCons.js" />
         <option value="$PROJECT_DIR$/node_modules/print_control/SocketControl.js" />
         <option value="$PROJECT_DIR$/node_modules/print_util/DataUtil.js" />
+        <option value="$PROJECT_DIR$/test.js" />
+        <option value="$PROJECT_DIR$/node_modules/print_control/TerminalControl.js" />
       </list>
     </option>
   </component>
@@ -219,13 +230,18 @@
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
   </component>
-  <component name="RunManager" selected="Node.js.BonusControl.js">
+  <component name="RunManager" selected="Node.js.test.js">
     <configuration default="false" name="TestSource.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="$PROJECT_DIR$/../../soft/node/bin/node" path-to-js-file="TestSource.js" working-dir="$PROJECT_DIR$">
       <RunnerSettings RunnerId="NodeJS.run" />
       <ConfigurationWrapper RunnerId="NodeJS.run" />
       <method />
     </configuration>
     <configuration default="false" name="BonusControl.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="$PROJECT_DIR$/../../soft/node/bin/node" path-to-js-file="BonusControl.js" working-dir="$PROJECT_DIR$/node_modules/print_control">
+      <RunnerSettings RunnerId="NodeJS.run" />
+      <ConfigurationWrapper RunnerId="NodeJS.run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="test.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="$PROJECT_DIR$/../../soft/node/bin/node" path-to-js-file="test.js" working-dir="$PROJECT_DIR$">
       <RunnerSettings RunnerId="NodeJS.run" />
       <ConfigurationWrapper RunnerId="NodeJS.run" />
       <method />
@@ -271,14 +287,16 @@
     <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
       <method />
     </configuration>
-    <list size="2">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Node.js.TestSource.js" />
       <item index="1" class="java.lang.String" itemvalue="Node.js.BonusControl.js" />
+      <item index="2" class="java.lang.String" itemvalue="Node.js.test.js" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Node.js.BonusControl.js" />
-        <item index="1" class="java.lang.String" itemvalue="Node.js.TestSource.js" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Node.js.test.js" />
+        <item index="1" class="java.lang.String" itemvalue="Node.js.BonusControl.js" />
+        <item index="2" class="java.lang.String" itemvalue="Node.js.TestSource.js" />
       </list>
     </recent_temporary>
   </component>
@@ -305,7 +323,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39065108" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39065108" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -397,14 +415,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="5400" max-vertical-offset="6984">
           <caret line="300" column="26" selection-start-line="300" selection-start-column="26" selection-end-line="300" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2826">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -545,14 +555,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/print_control/BonusControl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4261" max-vertical-offset="13482">
-          <caret line="260" column="37" selection-start-line="260" selection-start-column="37" selection-end-line="260" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/print_assist/TerminalAssist.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1185" max-vertical-offset="3006">
@@ -601,14 +603,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/print_control/TerminalControl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.4" vertical-offset="378" max-vertical-offset="38484">
-          <caret line="35" column="32" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/App.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1280" max-vertical-offset="2916">
@@ -619,8 +613,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/print_util/DataUtil.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.033088237" vertical-offset="5886" max-vertical-offset="7434">
-          <caret line="328" column="6" selection-start-line="328" selection-start-column="6" selection-end-line="328" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="5886" max-vertical-offset="7434">
+          <caret line="350" column="0" selection-start-line="350" selection-start-column="0" selection-end-line="350" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/print_control/BonusControl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4261" max-vertical-offset="13482">
+          <caret line="260" column="37" selection-start-line="260" selection-start-column="37" selection-end-line="260" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2187" max-vertical-offset="2880">
+          <caret line="144" column="11" selection-start-line="144" selection-start-column="11" selection-end-line="144" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/print_control/TerminalControl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.7041198" vertical-offset="16807" max-vertical-offset="38520">
+          <caret line="959" column="61" selection-start-line="959" selection-start-column="61" selection-end-line="959" selection-end-column="61" />
           <folding />
         </state>
       </provider>

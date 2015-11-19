@@ -1,3 +1,4 @@
+/*
 var moment = require('moment');
 var util = require('print_util');
 var mongoDBUtil = util.mongoDBUtil;
@@ -149,3 +150,6 @@ var testT52 = new test();
 testT52.T52();
 
 
+*/
+var test = "第1张   20463775662150785541#00179375[中奖注数:1注*2倍应退注数:0注*2倍中奖金额:5.92元";
+console.log(test.indexOf("中奖金额"))
