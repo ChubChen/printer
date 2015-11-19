@@ -26,8 +26,8 @@
       <file leaf-file-name="BonusControl.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/node_modules/print_control/BonusControl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.65779465" vertical-offset="13064" max-vertical-offset="13626">
-              <caret line="745" column="30" selection-start-line="745" selection-start-column="30" selection-end-line="745" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.45547944" vertical-offset="1073" max-vertical-offset="13626">
+              <caret line="67" column="2" selection-start-line="67" selection-start-column="2" selection-end-line="67" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -221,7 +221,7 @@
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
   </component>
-  <component name="RunManager" selected="Node.js.TerminalControl.js">
+  <component name="RunManager" selected="Node.js.BonusControl.js">
     <configuration default="false" name="TestSource.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="$PROJECT_DIR$/../../soft/node/bin/node" path-to-js-file="TestSource.js" working-dir="$PROJECT_DIR$">
       <RunnerSettings RunnerId="NodeJS.run" />
       <ConfigurationWrapper RunnerId="NodeJS.run" />
@@ -291,8 +291,8 @@
     </list>
     <recent_temporary>
       <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Node.js.TerminalControl.js" />
-        <item index="1" class="java.lang.String" itemvalue="Node.js.BonusControl.js" />
+        <item index="0" class="java.lang.String" itemvalue="Node.js.BonusControl.js" />
+        <item index="1" class="java.lang.String" itemvalue="Node.js.TerminalControl.js" />
         <item index="2" class="java.lang.String" itemvalue="Node.js.test.js" />
         <item index="3" class="java.lang.String" itemvalue="Node.js.TestSource.js" />
       </list>
@@ -321,7 +321,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959481" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39065108" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39065108" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -659,8 +659,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/print_control/BonusControl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65779465" vertical-offset="13064" max-vertical-offset="13626">
-          <caret line="745" column="30" selection-start-line="745" selection-start-column="30" selection-end-line="745" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.45547944" vertical-offset="1073" max-vertical-offset="13626">
+          <caret line="67" column="2" selection-start-line="67" selection-start-column="2" selection-end-line="67" selection-end-column="2" />
           <folding />
         </state>
       </provider>
