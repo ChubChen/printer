@@ -26,8 +26,8 @@
       <file leaf-file-name="BonusControl.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/node_modules/print_control/BonusControl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.28742516" vertical-offset="8910" max-vertical-offset="13482">
-              <caret line="503" column="18" selection-start-line="503" selection-start-column="18" selection-end-line="503" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.39520958" vertical-offset="1080" max-vertical-offset="13482">
+              <caret line="71" column="61" selection-start-line="71" selection-start-column="61" selection-end-line="71" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -653,8 +653,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/print_control/BonusControl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28742516" vertical-offset="8910" max-vertical-offset="13482">
-          <caret line="503" column="18" selection-start-line="503" selection-start-column="18" selection-end-line="503" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.39520958" vertical-offset="1080" max-vertical-offset="13482">
+          <caret line="71" column="61" selection-start-line="71" selection-start-column="61" selection-end-line="71" selection-end-column="61" />
           <folding />
         </state>
       </provider>
