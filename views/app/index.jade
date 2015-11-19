@@ -10,7 +10,7 @@ html(lang="en" class="no-js"  ng-app="printerApp" ng-init=ngUserInfo  )
         .navbar.navbar-fixed-top
             .navbar-inner
                 .container-fluid
-                    a.brand(href='#') 姚记出票
+                    a.brand(href='#') 出票平台
                     .nav-collapse.collapse
                         ul.nav.pull-right
                             li.dropdown
@@ -44,7 +44,7 @@ html(lang="en" class="no-js"  ng-app="printerApp" ng-init=ngUserInfo  )
                 .span3#sidebar
                     ul.nav.nav-list.bs-docs-sidenav.nav-collapse.collapse
                         li(ng-repeat="view in views")
-                            a(href="#/system")
+                            a(href="#/{{view.url}}")
                                 i.icon-chevron-right(ng-show='view.hasSubItems')
                                 span(ng-bind="view.name")
                     .row-fluid(style='margin-top:30px;')
