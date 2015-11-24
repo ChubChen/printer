@@ -102,7 +102,7 @@ saomiao.prototype.start = function (ticket) {
     var ticket = {
 
         gameCode:'T51', pType:'04', bType:'620', amount:200,
-        multiple:85, outerId:'',
+        multiple:17, outerId:'',
         number:'04|201511231015|0;04|201511231016|1;04|201511231017|2;04|201511231018|1;04|201511231019|0;04|201511231020|1'
 
        /* gameCode:'T51', pType:'06', bType:'21', amount:200,
