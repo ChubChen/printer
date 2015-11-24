@@ -102,7 +102,7 @@ saomiao.prototype.start = function (ticket) {
     var ticket = {
 
         gameCode:'T51', pType:'04', bType:'620', amount:200,
-        multiple:1, outerId:'',
+        multiple:85, outerId:'',
         number:'04|201511231015|0;04|201511231016|1;04|201511231017|2;04|201511231018|1;04|201511231019|0;04|201511231020|1'
 
        /* gameCode:'T51', pType:'06', bType:'21', amount:200,
@@ -145,7 +145,7 @@ saomiao.prototype.start = function (ticket) {
         str += self.transHun(self.mixConf, self.mixRow, resultArray, playArray);
     }
     str += self.btypeTrans(ticket.bType, ticket.multiple);
-    console.log(str);
+    console.log("123"+str);
 };
 //
 saomiao.prototype.trans = function(confObj, row, array){
@@ -238,8 +238,8 @@ saomiao.prototype.btypeTrans =  function(bType, multiple){
     var self = this;
     var resultArray = new Array();
     var betTypeConf = [[{"21":"1","31":"2","33":"4","34":"8","41":"1","44":"2","45":"4","46":"8","71":"1","77":"2","78":"4","721":"8"},{"735":"1","7120":"2","411":"1","11":"8"}],[{"51":"1","55":"2","56":"4","510":"8","81":"1","88":"2","89":"4","828":"8"},{"516":"1","520":"2","526":"4","856":"1","870":"2","8247":"4"}],[{"61":"1","66":"2","67":"4","615":"8"},{"620":"1","622":"2","635":"4","642":"8"}],[{"650":"1","657":"2"},{}]];
-    var multiplePeizhi = {"0":"0","1":"1","2":"2","3":"4","4":"8","5":"6","6":"7","7":"b","8":"c","9":"e","10":"f"};
-    var tenMultiple= {"0":"0","1":"2","2":"4","3":"8","4":"a","5":"b","6":"d"};
+    var multiplePeizhi = {"0":"0","1":"1","2":"2","3":"4","4":"8","5":"6","6":"7","7":"b","8":"c","9":"e"};
+    var tenMultiple= {"0":"0","1":"2","2":"4","3":"8","4":"a","5":"c","6":"e"};
     resultArray.push("00 00 ");
     for(var i = 0 ;i< 4; i++){
         var bool = true;
